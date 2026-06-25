@@ -68,7 +68,7 @@ export default function ProductCarousel() {
               com cada momento
             </h2>
             <p className="text-white/60 text-base leading-relaxed mb-8 font-light">
-              Vinagres produzidos com ingredientes selecionados e todo o cuidado que só a Saboroso tem há mais de 77 anos.
+              Vinagres produzidos com ingredientes selecionados e todo o cuidado que só a Saboroso tem há mais de 78 anos.
             </p>
             
             {/* Action & Nav Buttons */}

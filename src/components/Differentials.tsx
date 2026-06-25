@@ -28,7 +28,7 @@ export default function Differentials() {
       glowColor: "rgba(46,125,50,0.15)",
     },
     {
-      title: "77 Anos de Tradição",
+      title: "78 Anos de Tradição",
       desc: "Décadas de história, confiança e compromisso com o sabor dos brasileiros.",
       icon: Calendar,
       badgeColor: "border-saboroso-red text-saboroso-red bg-saboroso-red/10",

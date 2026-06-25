@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Vinagre Saboroso - 77 Anos de Tradição",
+  title: "Vinagre Saboroso - 78 Anos de Tradição",
   description: "Vinagres e temperos produzidos com tradição, qualidade e inovação para transformar cada refeição.",
 };
 
