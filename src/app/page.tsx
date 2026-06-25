@@ -1,7 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { motion, useScroll, useVelocity, useTransform, useSpring } from "framer-motion";
+import Lenis from "lenis";
 import LoadingScreen from "@/components/LoadingScreen";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -11,11 +12,30 @@ import Recipes from "@/components/Recipes";
 import Differentials from "@/components/Differentials";
 import Industry from "@/components/Industry";
 import MapSection from "@/components/MapSection";
-import ContactForm from "@/components/ContactForm";
 import Location from "@/components/Location";
+import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
 export default function Home() {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
 
