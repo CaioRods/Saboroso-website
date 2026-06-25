@@ -183,6 +183,7 @@ export default function Hero() {
                 y: macaY,
                 rotate: macaRotate,
                 scale: macaScale,
+                willChange: "transform",
               }}
             >
               <div className="relative w-full h-full animate-float flex justify-center items-center">
@@ -203,6 +204,7 @@ export default function Hero() {
                 y: tradY,
                 rotate: tradRotate,
                 scale: tradScale,
+                willChange: "transform",
               }}
             >
               <div className="relative w-full h-full animate-float-delayed flex justify-center items-center">
@@ -223,6 +225,7 @@ export default function Hero() {
                 y: limaoY,
                 rotate: limaoRotate,
                 scale: limaoScale,
+                willChange: "transform",
               }}
             >
               <div className="relative w-full h-full animate-float-delayed-more flex justify-center items-center">

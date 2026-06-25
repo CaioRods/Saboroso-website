@@ -185,7 +185,7 @@ export default function Timeline() {
                   {/* Styled Frame for Image */}
                   <motion.div
                     className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-saboroso-gold/15 mb-4 shadow-sm group"
-                    style={{ filter: imageFilters[index] }}
+                    style={{ filter: imageFilters[index], willChange: "filter" }}
                   >
                     <Image
                       src={event.image}

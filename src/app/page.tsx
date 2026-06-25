@@ -70,8 +70,17 @@ export default function Home() {
     }
   });
 
-  const topBlurFilter = useTransform(topBlurValue, (b) => b > 0.05 ? `blur(${b}px)` : "none");
-  const bottomBlurFilter = useTransform(bottomBlurValue, (b) => b > 0.05 ? `blur(${b}px)` : "none");
+  const topBlurFilter = useTransform(topBlurValue, (b) => {
+    if (b <= 0.1) return "none";
+    const rounded = Math.round(b * 10) / 10;
+    return `blur(${rounded}px)`;
+  });
+
+  const bottomBlurFilter = useTransform(bottomBlurValue, (b) => {
+    if (b <= 0.1) return "none";
+    const rounded = Math.round(b * 10) / 10;
+    return `blur(${rounded}px)`;
+  });
 
   return (
     <>
@@ -98,6 +107,7 @@ export default function Home() {
           WebkitBackdropFilter: topBlurFilter,
           maskImage: "linear-gradient(to bottom, black, transparent)",
           WebkitMaskImage: "linear-gradient(to bottom, black, transparent)",
+          willChange: "backdrop-filter",
         }}
       />
 
@@ -109,6 +119,7 @@ export default function Home() {
           WebkitBackdropFilter: bottomBlurFilter,
           maskImage: "linear-gradient(to top, black, transparent)",
           WebkitMaskImage: "linear-gradient(to top, black, transparent)",
+          willChange: "backdrop-filter",
         }}
       />
     </>
