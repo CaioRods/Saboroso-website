@@ -185,7 +185,7 @@ export default function Hero() {
             
             {/* Background Floating Logo Backdrop */}
             <motion.div
-              className="absolute top-[8%] lg:top-[-3%] left-1/2 -translate-x-1/2 w-[60%] sm:w-[50%] lg:w-[65%] aspect-[2.2/1] z-0 pointer-events-none select-none"
+              className="absolute top-[-75%] lg:top-[-3%] left-1/2 -translate-x-1/2 w-[60%] sm:w-[50%] lg:w-[65%] aspect-[2.2/1] z-0 pointer-events-none select-none"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
