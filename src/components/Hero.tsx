@@ -184,7 +184,6 @@ export default function Hero() {
                 rotate: macaRotate,
                 scale: macaScale,
               }}
-              whileHover={{ scale: 1.4, zIndex: 40, transition: { duration: 0.2 } }}
             >
               <div className="relative w-full h-full animate-float flex justify-center items-center">
                 <Image
@@ -205,7 +204,6 @@ export default function Hero() {
                 rotate: tradRotate,
                 scale: tradScale,
               }}
-              whileHover={{ scale: 1.55, zIndex: 40, transition: { duration: 0.2 } }}
             >
               <div className="relative w-full h-full animate-float-delayed flex justify-center items-center">
                 <Image
@@ -226,7 +224,6 @@ export default function Hero() {
                 rotate: limaoRotate,
                 scale: limaoScale,
               }}
-              whileHover={{ scale: 1.4, zIndex: 40, transition: { duration: 0.2 } }}
             >
               <div className="relative w-full h-full animate-float-delayed-more flex justify-center items-center">
                 <Image
