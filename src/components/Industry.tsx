@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { ArrowRight, Play, Factory, ChevronDown } from "lucide-react";
+import { ArrowRight, Play, Factory, ChevronDown, ChevronUp } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface IndustryProps {
@@ -111,37 +111,38 @@ export default function Industry({ onShowSocial, showSocial }: IndustryProps) {
         </div>
 
         {/* Down Scroll Indicator to Social Feed */}
-        <div className="flex justify-center mt-16 pt-4 border-t border-white/5">
-          <a
-            href="#social"
+        <div className="flex justify-center mt-16 pt-6 border-t border-white/5">
+          <button
             onClick={(e) => {
               e.preventDefault();
               onShowSocial();
-              setTimeout(() => {
-                const el = document.getElementById("social");
-                if (el) {
-                  el.scrollIntoView({ behavior: "smooth" });
-                }
-              }, 150);
+              if (!showSocial) {
+                setTimeout(() => {
+                  const el = document.getElementById("social");
+                  if (el) {
+                    el.scrollIntoView({ behavior: "smooth" });
+                  }
+                }, 200);
+              }
             }}
-            className="flex flex-col items-center gap-1.5 group cursor-pointer"
+            className="inline-flex items-center gap-3 bg-saboroso-gold/10 hover:bg-saboroso-gold/25 border border-saboroso-gold text-saboroso-gold px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-saboroso-gold/20 hover:scale-105 active:scale-95 transform cursor-pointer z-10"
           >
-            <span className="text-[9px] uppercase tracking-widest text-white/40 group-hover:text-saboroso-gold transition-colors font-bold">
-              {showSocial ? "Ver Redes Sociais" : "Abrir Redes Sociais"}
-            </span>
+            <span>{showSocial ? "Ver Menos" : "Ver Redes Sociais"}</span>
             <motion.div
-              animate={{
-                y: [0, 5, 0],
-              }}
+              animate={showSocial ? {} : { y: [0, 4, 0] }}
               transition={{
-                duration: 1.6,
+                duration: 1.5,
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
             >
-              <ChevronDown className="w-4.5 h-4.5 text-white/40 group-hover:text-saboroso-gold transition-colors" />
+              {showSocial ? (
+                <ChevronUp className="w-4.5 h-4.5 text-saboroso-gold" />
+              ) : (
+                <ChevronDown className="w-4.5 h-4.5 text-saboroso-gold" />
+              )}
             </motion.div>
-          </a>
+          </button>
         </div>
       </div>
     </section>

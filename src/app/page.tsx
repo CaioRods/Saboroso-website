@@ -95,7 +95,7 @@ export default function Home() {
         <ProductCarousel />
         <Recipes />
         <Differentials />
-        <Industry onShowSocial={() => setShowSocial(true)} showSocial={showSocial} />
+        <Industry onShowSocial={() => setShowSocial(!showSocial)} showSocial={showSocial} />
         <SocialFeed showSocial={showSocial} />
         <MapSection />
         <Location />
