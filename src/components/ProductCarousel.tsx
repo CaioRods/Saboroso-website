@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function ProductCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
 
   const products = [
     {
@@ -23,7 +24,7 @@ export default function ProductCarousel() {
       id: "maca",
       tag: "Vinagre de",
       name: "Maçã",
-      desc: "Toque frutado e acidez equilibrada para suas receitas. Produzido com maçãs selecionadas para um sabor suave e gourmet.",
+      desc: "Toque frutado e acidez equilibrada para suas receitas. Produzido com maçãs selecionadas para um sabor suave gourmet.",
       image: "/images/vinagre-maçã.png",
       glowColor: "rgba(197, 168, 128, 0.45)",
       bgColor: "from-saboroso-gold/20 to-saboroso-charcoal",
@@ -58,7 +59,7 @@ export default function ProductCarousel() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Left Text Column */}
-          <div className="lg:col-span-4 flex flex-col items-start">
+          <div className="lg:col-span-3 flex flex-col items-start">
             <span className="text-xs font-semibold tracking-widest text-saboroso-gold uppercase mb-4">
               Nossos Produtos
             </span>
@@ -99,13 +100,16 @@ export default function ProductCarousel() {
           </div>
 
           {/* Right Cards Slider Column */}
-          <div className="lg:col-span-8 overflow-visible">
+          <div className="lg:col-span-9 overflow-visible">
             {/* Desktop Products Grid */}
             <div className="hidden md:grid grid-cols-3 gap-6">
               {products.map((product, index) => (
                 <motion.div
                   key={product.id}
-                  className={`relative rounded-3xl overflow-hidden bg-gradient-to-b ${product.bgColor} border border-white/15 p-6 flex flex-col items-center justify-between min-h-[460px] group transition-all duration-500`}
+                  layout
+                  onMouseEnter={() => setHoveredProduct(product.id)}
+                  onMouseLeave={() => setHoveredProduct(null)}
+                  className="relative rounded-3xl overflow-hidden bg-gradient-to-b from-saboroso-charcoal-light to-saboroso-charcoal border border-white/15 p-6 flex flex-col items-center justify-between min-h-[460px] group transition-all duration-500 cursor-pointer"
                   style={{
                     boxShadow: `0 10px 30px -15px ${product.glowColor}`,
                   }}
@@ -114,6 +118,7 @@ export default function ProductCarousel() {
                     borderColor: "rgba(197, 168, 128, 0.3)",
                     boxShadow: `0 25px 50px -10px ${product.glowColor}`,
                   }}
+                  transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
                 >
                   {/* Glowing background bubble */}
                   <div
@@ -132,16 +137,24 @@ export default function ProductCarousel() {
                   </div>
 
                   {/* Text contents */}
-                  <div className="w-full text-center mt-6 z-10">
+                  <div className="w-full text-center mt-6 z-10 flex flex-col items-center">
                     <span className="text-[10px] uppercase tracking-widest text-saboroso-gold font-bold">
                       {product.tag}
                     </span>
                     <h3 className="text-xl font-serif font-bold text-white mt-1">
                       {product.name}
                     </h3>
-                    <p className="text-white/60 text-xs font-light line-clamp-2 mt-2 group-hover:line-clamp-none transition-all duration-300">
-                      {product.desc}
-                    </p>
+                    <motion.div
+                      layout="position"
+                      initial={{ height: 40 }}
+                      animate={{ height: hoveredProduct === product.id ? "auto" : 40 }}
+                      transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
+                      className="overflow-hidden mt-2 w-full"
+                    >
+                      <p className="text-white/60 text-xs font-light leading-relaxed">
+                        {product.desc}
+                      </p>
+                    </motion.div>
                   </div>
 
                   {/* Interactive Button */}
