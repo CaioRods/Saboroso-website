@@ -72,7 +72,7 @@ export default function ProductCarousel() {
             </p>
             
             {/* Action & Nav Buttons */}
-            <div className="flex items-center gap-6 mt-2">
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6 mt-2">
               <a
                 href="#comercial"
                 className="inline-flex items-center gap-3 border border-white/20 hover:border-saboroso-gold hover:text-saboroso-gold px-6 py-3 rounded-full text-xs font-bold tracking-wide uppercase transition-all duration-300"

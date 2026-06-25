@@ -89,9 +89,9 @@ export default function Timeline() {
   ];
 
   return (
-    <div id="empresa" ref={containerRef} className="relative h-[250vh] w-full bg-saboroso-cream">
+    <div id="empresa" ref={containerRef} className="relative h-auto lg:h-[250vh] w-full bg-saboroso-cream">
       <section
-        className="sticky top-0 h-screen flex flex-col justify-center bg-saboroso-cream overflow-hidden border-b border-saboroso-gold/10 w-full"
+        className="relative lg:sticky lg:top-0 h-auto lg:h-screen flex flex-col justify-center bg-saboroso-cream overflow-visible lg:overflow-hidden py-16 lg:py-0 border-b border-saboroso-gold/10 w-full"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         

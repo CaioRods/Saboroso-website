@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { ArrowRight, Play, ChevronDown } from "lucide-react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
@@ -69,22 +69,30 @@ export default function Hero() {
 
 
 
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   // Scroll transformations from progress 0 (top) to 0.7 (joined), remaining joined until 1.0
   // Orange (Maçã) -> Left
-  const macaX = useTransform(smoothProgress, [0, 0.7, 1.0], [-180, 0, 0]);
-  const macaY = useTransform(smoothProgress, [0, 0.7, 1.0], [-80, 0, 0]);
+  const macaX = useTransform(smoothProgress, (val) => val <= 0.7 ? (isMobile ? -60 : -180) * (1 - val / 0.7) : 0);
+  const macaY = useTransform(smoothProgress, (val) => val <= 0.7 ? (isMobile ? -30 : -80) * (1 - val / 0.7) : 0);
   const macaRotate = useTransform(smoothProgress, [0, 0.7, 1.0], [-18, 0, 0]);
   const macaScale = useTransform(smoothProgress, [0, 0.7, 1.0], [1.0, 1.25, 1.25]);
 
   // Red (Tradicional) -> Center (in front)
   const tradX = useTransform(smoothProgress, [0, 0.7, 1.0], [0, 0, 0]);
-  const tradY = useTransform(smoothProgress, [0, 0.7, 1.0], [-110, 0, 0]);
+  const tradY = useTransform(smoothProgress, (val) => val <= 0.7 ? (isMobile ? -40 : -110) * (1 - val / 0.7) : 0);
   const tradRotate = useTransform(smoothProgress, [0, 0.7, 1.0], [8, 0, 0]);
   const tradScale = useTransform(smoothProgress, [0, 0.7, 1.0], [1.1, 1.4, 1.4]);
 
   // Green (Limão) -> Right
-  const limaoX = useTransform(smoothProgress, [0, 0.7, 1.0], [180, 0, 0]);
-  const limaoY = useTransform(smoothProgress, [0, 0.7, 1.0], [-80, 0, 0]);
+  const limaoX = useTransform(smoothProgress, (val) => val <= 0.7 ? (isMobile ? 60 : 180) * (1 - val / 0.7) : 0);
+  const limaoY = useTransform(smoothProgress, (val) => val <= 0.7 ? (isMobile ? -30 : -80) * (1 - val / 0.7) : 0);
   const limaoRotate = useTransform(smoothProgress, [0, 0.7, 1.0], [15, 0, 0]);
   const limaoScale = useTransform(smoothProgress, [0, 0.7, 1.0], [1.0, 1.25, 1.25]);
 
@@ -132,7 +140,7 @@ export default function Hero() {
             {/* Headline */}
             <motion.h1
               variants={itemVariants}
-              className="text-4xl sm:text-5xl lg:text-6xl font-serif text-white font-bold leading-tight mb-6"
+              className="text-3xl sm:text-5xl lg:text-6xl font-serif text-white font-bold leading-tight mb-4 lg:mb-6"
             >
               78 anos levando <br />
               <span className="text-saboroso-gold italic font-normal">sabor</span> à mesa dos <br />
@@ -142,7 +150,7 @@ export default function Hero() {
             {/* Paragraph */}
             <motion.p
               variants={itemVariants}
-              className="text-base sm:text-lg text-white/80 max-w-lg mb-8 leading-relaxed font-light"
+              className="text-sm sm:text-lg text-white/80 max-w-lg mb-6 lg:mb-8 leading-relaxed font-light"
             >
               Vinagres e temperos produzidos com tradição, qualidade e inovação para transformar cada refeição.
             </motion.p>
@@ -150,7 +158,7 @@ export default function Hero() {
             {/* Action Buttons */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto"
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 lg:gap-4 w-full sm:w-auto"
             >
               <a
                 href="#produtos"
@@ -173,11 +181,11 @@ export default function Hero() {
           </motion.div>
 
           {/* Hero Bottles Display */}
-          <div className="lg:col-span-6 flex items-end justify-center relative h-[450px] sm:h-[500px] lg:h-[600px] w-full mt-8 lg:mt-0 select-none">
+          <div className="lg:col-span-6 flex items-end justify-center relative h-[280px] xs:h-[350px] sm:h-[500px] lg:h-[600px] w-full mt-4 lg:mt-0 select-none">
             
             {/* Background Floating Logo Backdrop */}
             <motion.div
-              className="absolute top-[4%] lg:top-[-3%] left-1/2 -translate-x-1/2 w-[85%] sm:w-[75%] lg:w-[65%] aspect-[2.2/1] z-0 pointer-events-none select-none"
+              className="absolute top-[8%] lg:top-[-3%] left-1/2 -translate-x-1/2 w-[70%] sm:w-[60%] lg:w-[65%] aspect-[2.2/1] z-0 pointer-events-none select-none"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
@@ -189,7 +197,7 @@ export default function Hero() {
                   src="/images/logo-hero.png"
                   alt="Saboroso Logo Background"
                   fill
-                  className="object-contain scale-[2.8] drop-shadow-[0_15px_30px_rgba(0,0,0,0.55)]"
+                  className="object-contain scale-[1.8] lg:scale-[2.8] drop-shadow-[0_15px_30px_rgba(0,0,0,0.55)]"
                   priority
                 />
               </div>

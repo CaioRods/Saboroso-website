@@ -130,7 +130,7 @@ export default function Navbar() {
               <span className="sr-only">Menu</span>
               {isOpen ? (
                 <svg
-                  className="h-6 h-6"
+                  className="w-6 h-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -144,7 +144,7 @@ export default function Navbar() {
                 </svg>
               ) : (
                 <svg
-                  className="h-6 h-6"
+                  className="w-6 h-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
