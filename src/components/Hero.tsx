@@ -175,6 +175,26 @@ export default function Hero() {
           {/* Hero Bottles Display */}
           <div className="lg:col-span-6 flex items-end justify-center relative h-[450px] sm:h-[500px] lg:h-[600px] w-full mt-8 lg:mt-0 select-none">
             
+            {/* Background Floating Logo Backdrop */}
+            <motion.div
+              className="absolute top-[8%] lg:top-[5%] left-1/2 -translate-x-1/2 w-[55%] sm:w-[45%] lg:w-[40%] aspect-[2.5/1] z-0 pointer-events-none select-none"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 0.45, scale: 1 }}
+              transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
+            >
+              <div className="relative w-full h-full animate-float flex justify-center items-center">
+                {/* Glowing backdrop shadow */}
+                <div className="absolute inset-0 bg-saboroso-gold/10 rounded-full filter blur-2xl opacity-60" />
+                <Image
+                  src="/images/logo.png"
+                  alt="Saboroso Logo Background"
+                  fill
+                  className="object-contain scale-[1.3] drop-shadow-[0_15px_30px_rgba(0,0,0,0.55)]"
+                  priority
+                />
+              </div>
+            </motion.div>
+
             {/* Limão Bottle (Green) - Left */}
             <motion.div
               className="absolute left-[30%] bottom-[2%] lg:bottom-[0%] -translate-x-1/2 w-[25%] sm:w-[21%] lg:w-[18%] aspect-[1/2.8] z-10 cursor-pointer"
