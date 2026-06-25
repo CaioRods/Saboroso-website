@@ -110,7 +110,7 @@ export default function Navbar() {
             </nav>
 
             <a
-              href="https://wa.me/551112345678"
+              href="https://wa.me/551835519191"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 bg-saboroso-red hover:bg-saboroso-red-dark text-white xl:px-4 xl:py-2.5 2xl:px-6 2xl:py-3 rounded-full text-[10px] xl:text-[11px] 2xl:text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-md hover:shadow-saboroso-red/30 hover:scale-105 active:scale-95 transform whitespace-nowrap"
@@ -185,7 +185,7 @@ export default function Navbar() {
               ))}
               <div className="pt-4 pb-2 px-3">
                 <a
-                  href="https://wa.me/551112345678"
+                  href="https://wa.me/551835519191"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 bg-saboroso-red hover:bg-saboroso-red-dark text-white px-5 py-3 rounded-full text-sm font-semibold tracking-wide uppercase transition-all duration-300 w-full"

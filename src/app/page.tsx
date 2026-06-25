@@ -13,6 +13,7 @@ import Differentials from "@/components/Differentials";
 import Industry from "@/components/Industry";
 import MapSection from "@/components/MapSection";
 import Location from "@/components/Location";
+import SocialFeed from "@/components/SocialFeed";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
@@ -95,6 +96,7 @@ export default function Home() {
         <Industry />
         <MapSection />
         <Location />
+        <SocialFeed />
         <ContactForm />
         <Footer />
       </main>

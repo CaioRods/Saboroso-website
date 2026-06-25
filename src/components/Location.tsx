@@ -5,7 +5,7 @@ import { MapPin, Compass, Clock, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Location() {
-  const address = "Av. Internacional, 2578 - Centro, Lucélia - SP, 17780-000";
+  const address = "Avenida Internacional, 2578 - Centro, Lucélia - SP, 17780-000";
   const gmapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(address)}`;
   const iframeUrl = `https://maps.google.com/maps?q=${encodeURIComponent(address)}&t=&z=16&ie=UTF8&iwloc=&output=embed`;
 

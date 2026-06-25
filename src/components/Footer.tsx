@@ -23,7 +23,7 @@ export default function Footer() {
               />
             </div>
             <span className="text-saboroso-gold-light italic font-serif text-lg tracking-wider block ml-1 mb-6">
-              77 Anos de Tradição
+              78 Anos de Tradição
             </span>
             <p className="text-white/70 text-xs sm:text-sm font-light leading-relaxed max-w-sm ml-1">
               Produzindo os melhores vinagres e condimentos do Brasil com amor, rigor técnico e sabor incomparável.
@@ -101,22 +101,22 @@ export default function Footer() {
             
             {/* Contact details */}
             <ul className="space-y-4 text-xs sm:text-sm font-light mb-8 w-full">
-              <li className="flex items-center gap-3">
+               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-saboroso-gold flex-shrink-0" />
-                <a href="tel:+551112345678" className="text-white/80 hover:text-saboroso-gold transition-colors">
-                  (11) 1234-5678
+                <a href="tel:+551835519191" className="text-white/80 hover:text-saboroso-gold transition-colors">
+                  (18) 3551-9191
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-saboroso-gold flex-shrink-0" />
-                <a href="mailto:contato@saboroso.com.br" className="text-white/80 hover:text-saboroso-gold transition-colors break-all">
-                  contato@saboroso.com.br
+                <a href="mailto:comercial@saborosoalimentos.com" className="text-white/80 hover:text-saboroso-gold transition-colors break-all">
+                  comercial@saborosoalimentos.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-saboroso-gold flex-shrink-0 mt-0.5" />
                 <span className="text-white/80 leading-relaxed">
-                  Av. Internacional, 2578 - Centro, Lucélia - SP, 17780-000
+                  Avenida Internacional, 2578 - Centro, Lucélia - SP, 17780-000
                 </span>
               </li>
             </ul>
@@ -154,7 +154,7 @@ export default function Footer() {
               </div>
               
               <a
-                href="https://wa.me/551112345678"
+                href="https://wa.me/551835519191"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-white hover:bg-saboroso-gold-light text-saboroso-red px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-md"

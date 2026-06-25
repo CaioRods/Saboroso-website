@@ -59,7 +59,7 @@ export default function Timeline() {
 
   const events = [
     {
-      year: "1949",
+      year: "1948",
       subtitle: "Fundação",
       title: "Nasce a Saboroso",
       desc: "Nasce a Saboroso com o compromisso de levar sabor e qualidade às famílias.",
@@ -115,7 +115,7 @@ export default function Timeline() {
           
           <div className="lg:col-span-7 lg:pt-8">
             <p className="text-saboroso-charcoal/70 text-base sm:text-lg mb-8 leading-relaxed font-light max-w-2xl">
-              Desde 1949, a Saboroso leva qualidade e sabor para milhões de lares brasileiros, evoluindo sempre sem perder nossas raízes.
+              Desde 1948, a Saboroso leva qualidade e sabor para milhões de lares brasileiros, evoluindo sempre sem perder nossas raízes.
             </p>
             
             <a

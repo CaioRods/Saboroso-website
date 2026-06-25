@@ -125,7 +125,7 @@ export default function Hero() {
             >
               <span className="w-1.5 h-1.5 rounded-full bg-saboroso-gold animate-ping" />
               <span className="text-[10px] sm:text-xs font-semibold tracking-widest text-saboroso-gold uppercase">
-                77 Anos de Tradição
+                78 Anos de Tradição
               </span>
             </motion.div>
 
@@ -134,7 +134,7 @@ export default function Hero() {
               variants={itemVariants}
               className="text-4xl sm:text-5xl lg:text-6xl font-serif text-white font-bold leading-tight mb-6"
             >
-              77 anos levando <br />
+              78 anos levando <br />
               <span className="text-saboroso-gold italic font-normal">sabor</span> à mesa dos <br />
               brasileiros
             </motion.h1>
