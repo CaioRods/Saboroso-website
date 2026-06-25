@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, useScroll, useVelocity, useTransform, useSpring } from "framer-motion";
 import Lenis from "lenis";
 import LoadingScreen from "@/components/LoadingScreen";
@@ -18,6 +18,8 @@ import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
 export default function Home() {
+  const [showSocial, setShowSocial] = useState(false);
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -93,8 +95,8 @@ export default function Home() {
         <ProductCarousel />
         <Recipes />
         <Differentials />
-        <Industry />
-        <SocialFeed />
+        <Industry onShowSocial={() => setShowSocial(true)} showSocial={showSocial} />
+        <SocialFeed showSocial={showSocial} />
         <MapSection />
         <Location />
         <ContactForm />

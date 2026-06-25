@@ -5,7 +5,12 @@ import Image from "next/image";
 import { ArrowRight, Play, Factory, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function Industry() {
+interface IndustryProps {
+  onShowSocial: () => void;
+  showSocial: boolean;
+}
+
+export default function Industry({ onShowSocial, showSocial }: IndustryProps) {
   const stats = [
     {
       number: "+10 milhões",
@@ -109,10 +114,20 @@ export default function Industry() {
         <div className="flex justify-center mt-16 pt-4 border-t border-white/5">
           <a
             href="#social"
+            onClick={(e) => {
+              e.preventDefault();
+              onShowSocial();
+              setTimeout(() => {
+                const el = document.getElementById("social");
+                if (el) {
+                  el.scrollIntoView({ behavior: "smooth" });
+                }
+              }, 150);
+            }}
             className="flex flex-col items-center gap-1.5 group cursor-pointer"
           >
             <span className="text-[9px] uppercase tracking-widest text-white/40 group-hover:text-saboroso-gold transition-colors font-bold">
-              Redes Sociais
+              {showSocial ? "Ver Redes Sociais" : "Abrir Redes Sociais"}
             </span>
             <motion.div
               animate={{
