@@ -11,7 +11,7 @@ export default function Location() {
 
   return (
     <section
-      id="contato"
+      id="localizacao"
       className="py-24 bg-saboroso-cream relative overflow-hidden border-b border-saboroso-gold/10"
     >
       {/* Decorative Background Elements */}

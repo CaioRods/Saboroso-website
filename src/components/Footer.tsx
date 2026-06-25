@@ -62,8 +62,8 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#comercial" className="text-white/70 hover:text-saboroso-gold transition-colors">
-                  Área Comercial
+                <a href="#localizacao" className="text-white/70 hover:text-saboroso-gold transition-colors">
+                  Localização
                 </a>
               </li>
             </ul>

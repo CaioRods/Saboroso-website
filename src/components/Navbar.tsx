@@ -27,7 +27,7 @@ export default function Navbar() {
     { name: "Produtos", href: "#produtos", hasDropdown: true },
     { name: "Receitas", href: "#receitas" },
     { name: "Distribuidores", href: "#distribuidores" },
-    { name: "Área Comercial", href: "#comercial" },
+    { name: "Localização", href: "#localizacao" },
     { name: "Contato", href: "#contato" },
   ];
 
