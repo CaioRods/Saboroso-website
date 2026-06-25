@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { ArrowRight, Play, Factory } from "lucide-react";
+import { ArrowRight, Play, Factory, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Industry() {
@@ -16,7 +16,7 @@ export default function Industry() {
       label: "pontos de venda em todo o Brasil",
     },
     {
-      number: "77 anos",
+      number: "78 anos",
       label: "de história e compromisso",
     },
   ];
@@ -103,6 +103,30 @@ export default function Industry() {
             ))}
           </div>
 
+        </div>
+
+        {/* Down Scroll Indicator to Social Feed */}
+        <div className="flex justify-center mt-16 pt-4 border-t border-white/5">
+          <a
+            href="#social"
+            className="flex flex-col items-center gap-1.5 group cursor-pointer"
+          >
+            <span className="text-[9px] uppercase tracking-widest text-white/40 group-hover:text-saboroso-gold transition-colors font-bold">
+              Redes Sociais
+            </span>
+            <motion.div
+              animate={{
+                y: [0, 5, 0],
+              }}
+              transition={{
+                duration: 1.6,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              <ChevronDown className="w-4.5 h-4.5 text-white/40 group-hover:text-saboroso-gold transition-colors" />
+            </motion.div>
+          </a>
         </div>
       </div>
     </section>

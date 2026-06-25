@@ -94,9 +94,9 @@ export default function Home() {
         <Recipes />
         <Differentials />
         <Industry />
+        <SocialFeed />
         <MapSection />
         <Location />
-        <SocialFeed />
         <ContactForm />
         <Footer />
       </main>
