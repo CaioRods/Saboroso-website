@@ -1,26 +1,59 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@theme {
+  --color-saboroso-red: #7A0C11;
+  --color-saboroso-red-dark: #50070A;
+  --color-saboroso-gold: #C5A880;
+  --color-saboroso-gold-dark: #8F744D;
+  --color-saboroso-gold-light: #EADDC9;
+  --color-saboroso-cream: #FCFAF5;
+  --color-saboroso-cream-dark: #F5EFEB;
+  --color-saboroso-charcoal: #181512;
+  --color-saboroso-charcoal-light: #2A2520;
+  
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-delayed: float 6s ease-in-out infinite 2s;
+  --animate-float-delayed-more: float 6s ease-in-out infinite 4s;
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
   }
 }
 
+:root {
+  --background: #FCFAF5;
+  --foreground: #181512;
+}
+
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #181512;
+}
+::-webkit-scrollbar-thumb {
+  background: #7A0C11;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C5A880;
+}
+
+html {
+  scroll-behavior: smooth;
 }
