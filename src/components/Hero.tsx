@@ -79,27 +79,27 @@ export default function Hero() {
 
   // Scroll transformations from progress 0 (top) to 0.7 (joined), remaining joined until 1.0
   // Orange (Maçã) -> Left
-  const macaX = useTransform(smoothProgress, (val) => val <= 0.7 ? (isMobile ? -60 : -180) * (1 - val / 0.7) : 0);
-  const macaY = useTransform(smoothProgress, (val) => val <= 0.7 ? (isMobile ? -30 : -80) * (1 - val / 0.7) : 0);
+  const macaX = useTransform(smoothProgress, (val) => val <= 0.7 ? (isMobile ? -35 : -180) * (1 - val / 0.7) : 0);
+  const macaY = useTransform(smoothProgress, (val) => val <= 0.7 ? (isMobile ? -15 : -80) * (1 - val / 0.7) : 0);
   const macaRotate = useTransform(smoothProgress, [0, 0.7, 1.0], [-18, 0, 0]);
   const macaScale = useTransform(smoothProgress, [0, 0.7, 1.0], [1.0, 1.25, 1.25]);
 
   // Red (Tradicional) -> Center (in front)
   const tradX = useTransform(smoothProgress, [0, 0.7, 1.0], [0, 0, 0]);
-  const tradY = useTransform(smoothProgress, (val) => val <= 0.7 ? (isMobile ? -40 : -110) * (1 - val / 0.7) : 0);
+  const tradY = useTransform(smoothProgress, (val) => val <= 0.7 ? (isMobile ? -20 : -110) * (1 - val / 0.7) : 0);
   const tradRotate = useTransform(smoothProgress, [0, 0.7, 1.0], [8, 0, 0]);
   const tradScale = useTransform(smoothProgress, [0, 0.7, 1.0], [1.1, 1.4, 1.4]);
 
   // Green (Limão) -> Right
-  const limaoX = useTransform(smoothProgress, (val) => val <= 0.7 ? (isMobile ? 60 : 180) * (1 - val / 0.7) : 0);
-  const limaoY = useTransform(smoothProgress, (val) => val <= 0.7 ? (isMobile ? -30 : -80) * (1 - val / 0.7) : 0);
+  const limaoX = useTransform(smoothProgress, (val) => val <= 0.7 ? (isMobile ? 35 : 180) * (1 - val / 0.7) : 0);
+  const limaoY = useTransform(smoothProgress, (val) => val <= 0.7 ? (isMobile ? -15 : -80) * (1 - val / 0.7) : 0);
   const limaoRotate = useTransform(smoothProgress, [0, 0.7, 1.0], [15, 0, 0]);
   const limaoScale = useTransform(smoothProgress, [0, 0.7, 1.0], [1.0, 1.25, 1.25]);
 
   return (
     <div id="home" ref={containerRef} className="relative h-[200vh] w-full bg-saboroso-charcoal">
       <section
-        className="sticky top-0 h-screen flex items-center justify-center bg-saboroso-charcoal overflow-hidden pt-24 pb-16 lg:py-0 w-full"
+        className="sticky top-0 h-screen flex items-center justify-center bg-saboroso-charcoal overflow-hidden pt-20 pb-8 lg:py-0 w-full"
       >
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
@@ -117,7 +117,7 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center min-h-[calc(100vh-6rem)]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center min-h-[calc(100vh-5rem)]">
           
           {/* Hero Text Content */}
           <motion.div
@@ -140,7 +140,7 @@ export default function Hero() {
             {/* Headline */}
             <motion.h1
               variants={itemVariants}
-              className="text-3xl sm:text-5xl lg:text-6xl font-serif text-white font-bold leading-tight mb-4 lg:mb-6"
+              className="text-3xl sm:text-5xl lg:text-6xl font-serif text-white font-bold leading-tight mb-3 lg:mb-6"
             >
               78 anos levando <br />
               <span className="text-saboroso-gold italic font-normal">sabor</span> à mesa dos <br />
@@ -150,7 +150,7 @@ export default function Hero() {
             {/* Paragraph */}
             <motion.p
               variants={itemVariants}
-              className="text-sm sm:text-lg text-white/80 max-w-lg mb-6 lg:mb-8 leading-relaxed font-light"
+              className="text-sm sm:text-lg text-white/80 max-w-lg mb-4 lg:mb-8 leading-relaxed font-light"
             >
               Vinagres e temperos produzidos com tradição, qualidade e inovação para transformar cada refeição.
             </motion.p>
@@ -181,11 +181,11 @@ export default function Hero() {
           </motion.div>
 
           {/* Hero Bottles Display */}
-          <div className="lg:col-span-6 flex items-end justify-center relative h-[280px] xs:h-[350px] sm:h-[500px] lg:h-[600px] w-full mt-4 lg:mt-0 select-none">
+          <div className="lg:col-span-6 flex items-end justify-center relative h-[160px] xs:h-[220px] sm:h-[300px] lg:h-[600px] w-full mt-4 lg:mt-0 select-none">
             
             {/* Background Floating Logo Backdrop */}
             <motion.div
-              className="absolute top-[8%] lg:top-[-3%] left-1/2 -translate-x-1/2 w-[70%] sm:w-[60%] lg:w-[65%] aspect-[2.2/1] z-0 pointer-events-none select-none"
+              className="absolute top-[8%] lg:top-[-3%] left-1/2 -translate-x-1/2 w-[60%] sm:w-[50%] lg:w-[65%] aspect-[2.2/1] z-0 pointer-events-none select-none"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
@@ -197,7 +197,7 @@ export default function Hero() {
                   src="/images/logo-hero.png"
                   alt="Saboroso Logo Background"
                   fill
-                  className="object-contain scale-[1.8] lg:scale-[2.8] drop-shadow-[0_15px_30px_rgba(0,0,0,0.55)]"
+                  className="object-contain scale-[1.3] lg:scale-[2.8] drop-shadow-[0_15px_30px_rgba(0,0,0,0.55)]"
                   priority
                 />
               </div>
@@ -219,7 +219,7 @@ export default function Hero() {
                   src="/images/vinagre-limao.png"
                   alt="Vinagre de Limão"
                   fill
-                  className="object-contain drop-shadow-[0_25px_50px_rgba(21,90,37,0.55)] scale-[2.2]"
+                  className="object-contain drop-shadow-[0_25px_50px_rgba(21,90,37,0.55)] scale-[1.3] lg:scale-[2.2]"
                 />
               </div>
             </motion.div>
@@ -240,7 +240,7 @@ export default function Hero() {
                   src="/images/vinagre-trad.png"
                   alt="Vinagre Tradicional"
                   fill
-                  className="object-contain drop-shadow-[0_30px_60px_rgba(122,12,17,0.65)] scale-[2.2]"
+                  className="object-contain drop-shadow-[0_30px_60px_rgba(122,12,17,0.65)] scale-[1.3] lg:scale-[2.2]"
                 />
               </div>
             </motion.div>
@@ -261,7 +261,7 @@ export default function Hero() {
                   src="/images/vinagre-maçã.png"
                   alt="Vinagre de Maçã"
                   fill
-                  className="object-contain drop-shadow-[0_25px_50px_rgba(197,168,128,0.55)] scale-[2.2]"
+                  className="object-contain drop-shadow-[0_25px_50px_rgba(197,168,128,0.55)] scale-[1.3] lg:scale-[2.2]"
                 />
               </div>
             </motion.div>
