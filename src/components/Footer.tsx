@@ -116,7 +116,7 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-saboroso-gold flex-shrink-0 mt-0.5" />
                 <span className="text-white/80 leading-relaxed">
-                  Rua das Indústrias, 123 - São Paulo - SP
+                  Av. Internacional, 2578 - Centro, Lucélia - SP, 17780-000
                 </span>
               </li>
             </ul>

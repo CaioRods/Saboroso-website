@@ -12,6 +12,7 @@ import Differentials from "@/components/Differentials";
 import Industry from "@/components/Industry";
 import MapSection from "@/components/MapSection";
 import ContactForm from "@/components/ContactForm";
+import Location from "@/components/Location";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -64,6 +65,7 @@ export default function Home() {
         <Differentials />
         <Industry />
         <MapSection />
+        <Location />
         <ContactForm />
         <Footer />
       </main>
