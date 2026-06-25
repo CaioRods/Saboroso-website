@@ -177,19 +177,19 @@ export default function Hero() {
             
             {/* Background Floating Logo Backdrop */}
             <motion.div
-              className="absolute top-[8%] lg:top-[3%] left-1/2 -translate-x-1/2 w-[90%] sm:w-[80%] lg:w-[75%] aspect-[2.5/1] z-0 pointer-events-none select-none"
+              className="absolute top-[8%] lg:top-[0%] left-1/2 -translate-x-1/2 w-[95%] sm:w-[90%] lg:w-[85%] aspect-[3.2/1] z-0 pointer-events-none select-none overflow-hidden"
               initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 0.75, scale: 1 }}
+              animate={{ opacity: 0.8, scale: 1 }}
               transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
             >
               <div className="relative w-full h-full animate-float flex justify-center items-center">
                 {/* Glowing backdrop shadow */}
-                <div className="absolute inset-0 bg-saboroso-gold/15 rounded-full filter blur-3xl opacity-65" />
+                <div className="absolute inset-0 bg-saboroso-gold/20 rounded-full filter blur-3xl opacity-75" />
                 <Image
-                  src="/images/logo.png"
+                  src="/images/logo-hero.png"
                   alt="Saboroso Logo Background"
                   fill
-                  className="object-contain scale-[1.4] drop-shadow-[0_15px_35px_rgba(0,0,0,0.65)]"
+                  className="object-contain scale-[2.2] drop-shadow-[0_15px_35px_rgba(0,0,0,0.65)]"
                   priority
                 />
               </div>
