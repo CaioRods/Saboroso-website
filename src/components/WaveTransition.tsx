@@ -216,8 +216,8 @@ export function WaveTransitionProvider({ children }: { children: React.ReactNode
           transition: "filter 0.35s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.35s cubic-bezier(0.25, 1, 0.5, 1), transform 0.35s cubic-bezier(0.25, 1, 0.5, 1)",
           filter: isAnchorBlurring ? "blur(18px)" : "none",
           opacity: isAnchorBlurring ? 0.05 : 1,
-          transform: isAnchorBlurring ? "scale(0.96)" : "scale(1)",
-          willChange: "filter, opacity, transform",
+          transform: isAnchorBlurring ? "scale(0.96)" : "none",
+          willChange: isAnchorBlurring ? "filter, opacity, transform" : "auto",
         }}
       >
         {children}
