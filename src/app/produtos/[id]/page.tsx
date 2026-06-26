@@ -195,7 +195,7 @@ export default function ProductPage() {
     <>
       <Navbar onOpenContact={() => setIsContactOpen(true)} />
       
-      <main className="min-h-screen bg-saboroso-charcoal text-white pt-28 pb-16 relative overflow-hidden select-none">
+      <main className="min-h-screen bg-saboroso-charcoal text-white pt-28 sm:pt-32 lg:pt-40 xl:pt-48 2xl:pt-56 pb-16 relative overflow-hidden select-none">
         
         {/* Decorative Radial Background Lights */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none">
