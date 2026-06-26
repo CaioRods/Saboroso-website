@@ -211,7 +211,7 @@ export default function ProductPage() {
           {/* Back Button */}
           <button
             onClick={() => transitionTo("/#produtos")}
-            className="inline-flex items-center gap-2 border border-white/10 hover:border-saboroso-gold/50 bg-white/5 rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 mb-10 hover:-translate-x-1 cursor-pointer"
+            className="inline-flex items-center gap-2 border border-white/10 hover:border-saboroso-gold/50 bg-white/5 rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 mb-8 hover:-translate-x-1 cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             Voltar aos Produtos
