@@ -22,6 +22,7 @@ export function WaveTransitionProvider({ children }: { children: React.ReactNode
   const [step, setStep] = useState<"idle" | "entering" | "covered" | "exiting">("idle");
   const [waveColor, setWaveColor] = useState("#C5A880"); // default brand gold
   const targetUrlRef = useRef<string | null>(null);
+  const lastPathname = useRef(pathname);
 
   const transitionTo = (href: string, color?: string) => {
     if (step !== "idle") return; // prevent double transitions
@@ -52,13 +53,17 @@ export function WaveTransitionProvider({ children }: { children: React.ReactNode
     setStep("entering");
   };
 
-  // Trigger page transition clean-up / exit wave once pathname updates
+  // Detect when the page pathname actually changes, and trigger the exiting wave
   useEffect(() => {
-    if (step === "covered" || step === "entering") {
-      const timer = setTimeout(() => {
-        setStep("exiting");
-      }, 80);
-      return () => clearTimeout(timer);
+    if (pathname !== lastPathname.current) {
+      lastPathname.current = pathname;
+      if (step === "covered" || step === "entering") {
+        // Short delay to let the new page content mount
+        const timer = setTimeout(() => {
+          setStep("exiting");
+        }, 150);
+        return () => clearTimeout(timer);
+      }
     }
   }, [pathname, step]);
 
@@ -78,41 +83,39 @@ export function WaveTransitionProvider({ children }: { children: React.ReactNode
     }
   };
 
-  // SVG Path Morphing animations
-  // Covering the viewport (bottom-to-top wave)
+  // SVG Path Morphing animations (Cubic Bezier S-Curve shapes)
   const enterVariants = {
     initial: {
-      d: "M 0 100 L 0 100 Q 50 100 100 100 L 100 100 Z",
+      d: "M 0,100 L 0,100 C 30,100 70,100 100,100 L 100,100 Z",
     },
     animate: {
       d: [
-        "M 0 100 L 0 100 Q 50 100 100 100 L 100 100 Z", // Flat bottom
-        "M 0 100 L 0 45 Q 50 -15 100 45 L 100 100 Z",   // Curved wave rising
-        "M 0 100 L 0 0 Q 50 0 100 0 L 100 100 Z",       // Flat top (solid cover)
+        "M 0,100 L 0,100 C 30,100 70,100 100,100 L 100,100 Z", // Flat bottom
+        "M 0,100 L 0,45 C 30,15 70,75 100,45 L 100,100 Z",    // S-curve wave crest rising
+        "M 0,100 L 0,0 C 30,0 70,0 100,0 L 100,100 Z",        // Flat top (solid cover)
       ],
       transition: {
-        duration: 0.75,
+        duration: 0.85,
         times: [0, 0.5, 1],
-        ease: [0.76, 0, 0.24, 1] as any,
+        ease: ["easeIn", "easeOut"] as any,
       },
     },
   };
 
-  // Uncovering the viewport (top-to-top wave exiting upwards)
   const exitVariants = {
     initial: {
-      d: "M 0 100 L 0 0 Q 50 0 100 0 L 100 100 Z",
+      d: "M 0,0 L 0,100 C 30,100 70,100 100,100 L 100,0 Z",
     },
     animate: {
       d: [
-        "M 0 100 L 0 0 Q 50 0 100 0 L 100 100 Z",       // Flat top (solid cover)
-        "M 0 0 L 0 55 Q 50 115 100 55 L 100 0 Z",       // Wave pulling upwards
-        "M 0 0 L 0 0 Q 50 0 100 0 L 100 0 Z",           // Flat top (empty)
+        "M 0,0 L 0,100 C 30,100 70,100 100,100 L 100,0 Z",    // Flat top (solid cover)
+        "M 0,0 L 0,45 C 30,75 70,15 100,45 L 100,0 Z",        // S-curve wave retracting
+        "M 0,0 L 0,0 C 30,0 70,0 100,0 L 100,0 Z",            // Flat top (empty)
       ],
       transition: {
-        duration: 0.75,
+        duration: 0.85,
         times: [0, 0.5, 1],
-        ease: [0.76, 0, 0.24, 1] as any,
+        ease: ["easeIn", "easeOut"] as any,
       },
     },
   };
@@ -120,15 +123,21 @@ export function WaveTransitionProvider({ children }: { children: React.ReactNode
   return (
     <TransitionContext.Provider value={{ transitionTo, isTransitioning: step !== "idle" }}>
       {children}
-      <div className="fixed inset-0 pointer-events-none z-[99999] overflow-hidden select-none">
+      <div className="fixed inset-0 pointer-events-none z-[999999] overflow-hidden select-none">
         {step === "entering" && (
           <svg
             className="absolute inset-0 w-full h-full pointer-events-auto"
             viewBox="0 0 100 100"
             preserveAspectRatio="none"
           >
+            <defs>
+              <filter id="wave-shadow-enter" x="-10%" y="-30%" width="120%" height="160%">
+                <feDropShadow dx="0" dy="10" stdDeviation="12" floodColor="rgba(0, 0, 0, 0.5)" />
+              </filter>
+            </defs>
             <motion.path
               fill={waveColor}
+              filter="url(#wave-shadow-enter)"
               variants={enterVariants}
               initial="initial"
               animate="animate"
@@ -148,8 +157,14 @@ export function WaveTransitionProvider({ children }: { children: React.ReactNode
             viewBox="0 0 100 100"
             preserveAspectRatio="none"
           >
+            <defs>
+              <filter id="wave-shadow-exit" x="-10%" y="-30%" width="120%" height="160%">
+                <feDropShadow dx="0" dy="10" stdDeviation="12" floodColor="rgba(0, 0, 0, 0.5)" />
+              </filter>
+            </defs>
             <motion.path
               fill={waveColor}
+              filter="url(#wave-shadow-exit)"
               variants={exitVariants}
               initial="initial"
               animate="animate"
