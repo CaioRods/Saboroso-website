@@ -31,7 +31,7 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
     { name: "Home", href: "/#home" },
     { name: "Empresa", href: "/#empresa" },
     { name: "Produtos", href: "/#produtos", hasDropdown: true },
-    { name: "Receitas", href: "/#receitas" },
+    { name: "Receitas", href: "/receitas" },
     { name: "Distribuidores", href: "/#distribuidores" },
     { name: "Localização", href: "/#localizacao" },
     { name: "Contato", href: "/#contato" },
