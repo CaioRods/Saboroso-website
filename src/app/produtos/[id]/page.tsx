@@ -195,7 +195,7 @@ export default function ProductPage() {
     <>
       <Navbar onOpenContact={() => setIsContactOpen(true)} />
       
-      <main className="min-h-screen bg-saboroso-charcoal text-white pt-24 pb-16 relative overflow-hidden select-none">
+      <main className="min-h-screen bg-saboroso-charcoal text-white pt-28 pb-16 relative overflow-hidden select-none">
         
         {/* Decorative Radial Background Lights */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none">
@@ -211,7 +211,7 @@ export default function ProductPage() {
           {/* Back Button */}
           <button
             onClick={() => transitionTo("/#produtos")}
-            className="inline-flex items-center gap-2 border border-white/10 hover:border-saboroso-gold/50 bg-white/5 rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 mb-4 hover:-translate-x-1 cursor-pointer"
+            className="inline-flex items-center gap-2 border border-white/10 hover:border-saboroso-gold/50 bg-white/5 rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 mb-5 hover:-translate-x-1 cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             Voltar aos Produtos
