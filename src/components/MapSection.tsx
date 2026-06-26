@@ -80,14 +80,14 @@ export default function MapSection() {
             </p>
 
             {/* Filter buttons */}
-            <div className="flex flex-row flex-wrap gap-3 w-full sm:w-auto mt-2">
+            <div className="flex flex-col gap-3 w-full sm:w-auto">
               {filters.map((filter) => {
                 const isActive = activeFilter === filter.id;
                 return (
                   <button
                     key={filter.id}
                     onClick={() => setActiveFilter(filter.id)}
-                    className={`px-6 py-3 rounded-full text-xs font-bold tracking-wide uppercase transition-all duration-300 text-center border ${
+                    className={`px-6 py-3 rounded-full text-xs font-bold tracking-wide uppercase transition-all duration-300 text-left border ${
                       isActive
                         ? "bg-saboroso-red border-saboroso-red text-white shadow-md shadow-saboroso-red/25"
                         : "bg-white border-saboroso-gold/20 text-saboroso-charcoal hover:border-saboroso-gold hover:bg-saboroso-cream"
@@ -105,12 +105,12 @@ export default function MapSection() {
             
             {/* SVG Regions Map of Brazil */}
             <svg
-              viewBox="0 0 450 450"
+              viewBox="0 0 500 500"
               className="w-full max-w-[400px] h-auto filter drop-shadow-xl"
             >
               {/* Norte */}
               <motion.path
-                d="M 50,150 L 150,110 L 230,110 L 250,150 L 210,210 L 150,210 L 130,240 L 90,240 Z"
+                d="M 250 250 L 60 312 A 200 200 0 0 1 250 50 Z"
                 fill={statusColors[activeRegions.norte as keyof typeof statusColors].fill}
                 stroke="#ffffff"
                 strokeWidth="2"
@@ -119,7 +119,7 @@ export default function MapSection() {
               />
               {/* Nordeste */}
               <motion.path
-                d="M 230,110 L 270,110 L 330,130 L 350,160 L 330,200 L 290,200 L 250,150 Z"
+                d="M 250 250 L 250 50 A 200 200 0 0 1 447 215 Z"
                 fill={statusColors[activeRegions.nordeste as keyof typeof statusColors].fill}
                 stroke="#ffffff"
                 strokeWidth="2"
@@ -128,7 +128,7 @@ export default function MapSection() {
               />
               {/* Centro-Oeste */}
               <motion.path
-                d="M 130,240 L 150,210 L 210,210 L 250,150 L 290,200 L 280,240 L 260,260 L 260,290 L 210,290 L 170,280 Z"
+                d="M 250 250 L 182 438 A 200 200 0 0 1 60 312 Z"
                 fill={statusColors[activeRegions.centro as keyof typeof statusColors].fill}
                 stroke="#ffffff"
                 strokeWidth="2"
@@ -137,7 +137,7 @@ export default function MapSection() {
               />
               {/* Sudeste */}
               <motion.path
-                d="M 290,200 L 330,200 L 320,240 L 330,260 L 310,295 L 260,290 L 260,260 L 280,240 Z"
+                d="M 250 250 L 447 215 A 200 200 0 0 1 379 403 Z"
                 fill={statusColors[activeRegions.sudeste as keyof typeof statusColors].fill}
                 stroke="#ffffff"
                 strokeWidth="2"
@@ -146,7 +146,7 @@ export default function MapSection() {
               />
               {/* Sul */}
               <motion.path
-                d="M 210,290 L 260,290 L 260,320 L 240,360 L 220,360 L 210,320 Z"
+                d="M 250 250 L 379 403 A 200 200 0 0 1 182 438 Z"
                 fill={statusColors[activeRegions.sul as keyof typeof statusColors].fill}
                 stroke="#ffffff"
                 strokeWidth="2"

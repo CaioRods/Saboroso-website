@@ -95,11 +95,9 @@ export default function Timeline() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         
-        {/* Main Grid Layout to match mockup (Left Column: Info, Right Column: Timeline) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
-          
-          {/* Left Column: Heading and Info */}
-          <div className="lg:col-span-4 flex flex-col items-start pr-0 lg:pr-8">
+        {/* Top Section Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
+          <div className="lg:col-span-5">
             {/* Category */}
             <div className="flex items-center gap-2 mb-4">
               <History className="w-4.5 h-4.5 text-saboroso-gold" />
@@ -110,11 +108,13 @@ export default function Timeline() {
             
             {/* Heading */}
             <h2 className="text-3xl sm:text-4xl font-serif text-saboroso-charcoal font-bold leading-tight mb-6">
-              Tradição que <br />
+              Tradição que <br className="hidden sm:inline" />
               atravessa gerações
             </h2>
-
-            <p className="text-saboroso-charcoal/70 text-sm sm:text-base mb-8 leading-relaxed font-light">
+          </div>
+          
+          <div className="lg:col-span-7 lg:pt-8">
+            <p className="text-saboroso-charcoal/70 text-base sm:text-lg mb-8 leading-relaxed font-light max-w-2xl">
               Desde 1948, a Saboroso leva qualidade e sabor para milhões de lares brasileiros, evoluindo sempre sem perder nossas raízes.
             </p>
             
@@ -126,82 +126,82 @@ export default function Timeline() {
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>
-          
-          {/* Right Column: Timeline nodes */}
-          <div className="lg:col-span-8 relative mt-8 lg:mt-4 w-full">
-            {/* Connecting Line (Desktop) */}
-            <div className="hidden lg:block absolute top-[18px] left-[12.5%] right-[12.5%] h-[2px] bg-saboroso-gold/20 z-0">
+        </div>
+
+        {/* Timeline Grid (Desktop Horizontal, Mobile Vertical) */}
+        <div className="relative mt-20">
+          {/* Connecting Line (Desktop) */}
+          <div className="hidden lg:block absolute top-[18px] left-0 right-0 h-[2px] bg-saboroso-gold/20 z-0">
+            <motion.div
+              style={{ width: lineWidth }}
+              className="h-full bg-saboroso-red origin-left"
+            />
+          </div>
+
+          {/* Timeline Nodes */}
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-6 relative z-10">
+            {events.map((event, index) => (
               <motion.div
-                style={{ width: lineWidth }}
-                className="h-full bg-saboroso-red origin-left"
-              />
-            </div>
-
-            {/* Timeline Nodes */}
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-4 relative z-10">
-              {events.map((event, index) => (
-                <motion.div
-                  key={event.year}
-                  className="relative flex flex-col items-start lg:items-center pl-16 lg:pl-0 text-left lg:text-center"
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.6, delay: index * 0.15 }}
-                >
-                  {/* Connecting Line (Mobile Segment) */}
-                  {index < events.length - 1 && (
-                    <div className="lg:hidden absolute left-[25px] top-[18px] bottom-[-66px] w-[2px] bg-saboroso-gold/20 z-0">
-                      <motion.div
-                        style={{ scaleY: segmentScaleYs[index] }}
-                        className="w-full bg-saboroso-red origin-top h-full"
-                      />
-                    </div>
-                  )}
-
-                  {/* Year Badge & Node Connector */}
-                  <div className="absolute left-2 lg:left-auto top-0 lg:relative lg:mb-6 flex lg:justify-center w-full">
-                    {/* Timeline dot */}
+                key={event.year}
+                className="relative flex flex-col items-start pl-16 lg:pl-0"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+              >
+                {/* Connecting Line (Mobile Segment) */}
+                {index < events.length - 1 && (
+                  <div className="lg:hidden absolute left-[25px] top-[18px] bottom-[-66px] w-[2px] bg-saboroso-gold/20 z-0">
                     <motion.div
-                      style={{ borderColor: dotBorders[index] }}
-                      className="w-9 h-9 rounded-full bg-saboroso-cream border-2 flex items-center justify-center shadow-md relative z-10"
-                    >
-                      <motion.div
-                        style={{ scale: dotScales[index], backgroundColor: dotColors[index] }}
-                        className="w-3 h-3 rounded-full"
-                      />
-                    </motion.div>
+                      style={{ scaleY: segmentScaleYs[index] }}
+                      className="w-full bg-saboroso-red origin-top h-full"
+                    />
                   </div>
+                )}
 
-                  {/* Event Content */}
-                  <div className="w-full">
-                    <span className="text-2xl sm:text-3xl font-serif font-bold text-saboroso-red block mb-0.5">
-                      {event.year}
-                    </span>
-                    <span className="text-[10px] sm:text-xs font-bold tracking-widest text-saboroso-gold uppercase block mb-4">
-                      {event.subtitle}
-                    </span>
-
-                    {/* Styled Frame for Image */}
+                {/* Year Badge & Node Connector */}
+                <div className="absolute left-2 lg:left-0 top-0 lg:relative lg:mb-6">
+                  {/* Timeline dot */}
+                  <motion.div
+                    style={{ borderColor: dotBorders[index] }}
+                    className="w-9 h-9 rounded-full bg-saboroso-cream border-2 flex items-center justify-center shadow-md relative z-10"
+                  >
                     <motion.div
-                      className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-saboroso-gold/15 mb-4 shadow-sm group"
-                      style={{ filter: imageFilters[index], willChange: "filter" }}
-                    >
-                      <Image
-                        src={event.image}
-                        alt={event.title}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-saboroso-charcoal/40 to-transparent" />
-                    </motion.div>
+                      style={{ scale: dotScales[index], backgroundColor: dotColors[index] }}
+                      className="w-3 h-3 rounded-full"
+                    />
+                  </motion.div>
+                </div>
 
-                    <p className="text-saboroso-charcoal/80 text-sm leading-relaxed font-light">
-                      {event.desc}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+                {/* Event Content */}
+                <div className="w-full">
+                  <span className="text-2xl sm:text-3xl font-serif font-bold text-saboroso-red block mb-0.5">
+                    {event.year}
+                  </span>
+                  <span className="text-[10px] sm:text-xs font-bold tracking-widest text-saboroso-gold uppercase block mb-4">
+                    {event.subtitle}
+                  </span>
+
+                  {/* Styled Frame for Image */}
+                  <motion.div
+                    className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-saboroso-gold/15 mb-4 shadow-sm group"
+                    style={{ filter: imageFilters[index], willChange: "filter" }}
+                  >
+                    <Image
+                      src={event.image}
+                      alt={event.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-saboroso-charcoal/40 to-transparent" />
+                  </motion.div>
+
+                  <p className="text-saboroso-charcoal/80 text-sm leading-relaxed font-light">
+                    {event.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
 

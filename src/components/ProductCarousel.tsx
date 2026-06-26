@@ -109,7 +109,7 @@ export default function ProductCarousel() {
                   layout
                   onMouseEnter={() => setHoveredProduct(product.id)}
                   onMouseLeave={() => setHoveredProduct(null)}
-                  className={`relative rounded-3xl overflow-hidden bg-gradient-to-b ${product.bgColor} border border-white/15 p-6 flex flex-col items-center justify-between min-h-[460px] group transition-all duration-500 cursor-pointer`}
+                  className="relative rounded-3xl overflow-hidden bg-gradient-to-b from-saboroso-charcoal-light to-saboroso-charcoal border border-white/15 p-6 flex flex-col items-center justify-between min-h-[460px] group transition-all duration-500 cursor-pointer"
                   style={{
                     boxShadow: `0 10px 30px -15px ${product.glowColor}`,
                   }}
