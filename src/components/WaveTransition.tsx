@@ -27,6 +27,11 @@ export function WaveTransitionProvider({ children }: { children: React.ReactNode
   const transitionTo = (href: string, color?: string) => {
     if (step !== "idle") return; // prevent double transitions
 
+    // If we are currently on a product page, and navigating back to home, set returning flag
+    if (pathname.startsWith("/produtos") && (href === "/" || href.startsWith("/#") || href.startsWith("#"))) {
+      sessionStorage.setItem("returning_from_product", "true");
+    }
+
     // If it's a hash anchor on the same page, do a smooth scroll instead of page transition
     if ((href.startsWith("#") || href.startsWith("/#")) && pathname === "/") {
       const anchor = href.replace("/#", "").replace("#", "");

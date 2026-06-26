@@ -6,9 +6,17 @@ import { motion, AnimatePresence, Variants } from "framer-motion";
 
 export default function LoadingScreen() {
   const [loading, setLoading] = useState(true);
-  const [mounted, setMounted] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    const returningFromProduct = sessionStorage.getItem("returning_from_product");
+    if (returningFromProduct === "true") {
+      // Skip the loading screen entirely if returning from a product page
+      sessionStorage.removeItem("returning_from_product");
+      return;
+    }
+
+    setMounted(true);
     // Prevent scrolling while loading
     document.body.style.overflow = "hidden";
 
