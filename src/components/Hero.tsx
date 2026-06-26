@@ -111,12 +111,14 @@ export default function Hero() {
           className="object-cover object-center scale-105 select-none"
         />
         {/* Rich dark gradient overlays for readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-saboroso-charcoal via-saboroso-charcoal/70 to-transparent md:block hidden" />
-        <div className="absolute inset-0 bg-gradient-to-b from-saboroso-charcoal/80 via-transparent to-saboroso-charcoal md:hidden" />
-        <div className="absolute inset-0 bg-saboroso-charcoal/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-saboroso-charcoal via-saboroso-charcoal/85 to-saboroso-charcoal/10 md:block hidden z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-saboroso-charcoal/90 via-transparent to-saboroso-charcoal md:hidden z-10" />
+        {/* Radial vignette mask centered at 70% X (bottles) on desktop and 50% X on mobile */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,transparent_15%,rgba(24,21,18,0.75)_80%)] hidden md:block z-10" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_75%,transparent_10%,rgba(24,21,18,0.85)_80%)] md:hidden z-10" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center min-h-[calc(100vh-5rem)]">
           
           {/* Hero Text Content */}
@@ -126,10 +128,10 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
           >
-            {/* Outline pill badge */}
+            {/* Premium Glassmorphic Badge */}
             <motion.div
               variants={itemVariants}
-              className="inline-flex items-center gap-2 border border-saboroso-gold/40 rounded-full px-4 py-1.5 bg-saboroso-charcoal/50 backdrop-blur-sm mb-6"
+              className="inline-flex items-center gap-2 border border-white/10 hover:border-saboroso-gold/40 rounded-full px-4 py-1.5 bg-white/5 backdrop-blur-md mb-6 shadow-lg shadow-black/10 transition-colors duration-300"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-saboroso-gold animate-ping" />
               <span className="text-[10px] sm:text-xs font-semibold tracking-widest text-saboroso-gold uppercase">
@@ -162,18 +164,18 @@ export default function Hero() {
             >
               <a
                 href="#produtos"
-                className="inline-flex items-center justify-center gap-3 bg-[#388E3C] hover:bg-[#2E7D32] text-white px-8 py-4 rounded-full font-bold text-sm tracking-wide uppercase transition-all duration-300 shadow-lg shadow-[#388E3C]/20 hover:shadow-[#388E3C]/40 transform hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-[#388E3C] to-[#2E7D32] hover:from-[#2E7D32] hover:to-[#1B5E20] text-white px-8 py-4 rounded-full font-bold text-sm tracking-wide uppercase transition-all duration-300 shadow-lg shadow-[#388E3C]/30 hover:shadow-[#388E3C]/50 transform hover:-translate-y-0.5"
               >
                 Conheça os Produtos
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4.5 h-4.5" />
               </a>
 
               <a
                 href="#empresa"
-                className="inline-flex items-center justify-center gap-3 border border-white hover:border-saboroso-gold hover:text-saboroso-gold text-white px-8 py-4 rounded-full font-bold text-sm tracking-wide uppercase transition-all duration-300 bg-white/5 hover:bg-white/10"
+                className="inline-flex items-center justify-center gap-3 border border-white/10 hover:border-saboroso-gold/50 hover:text-saboroso-gold text-white px-8 py-4 rounded-full font-bold text-sm tracking-wide uppercase transition-all duration-300 bg-white/5 hover:bg-white/10 backdrop-blur-sm transform hover:-translate-y-0.5"
               >
                 Nossa História
-                <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center">
+                <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-colors">
                   <Play className="w-3 h-3 fill-current ml-0.5" />
                 </div>
               </a>
@@ -183,9 +185,16 @@ export default function Hero() {
           {/* Hero Bottles Display */}
           <div className="lg:col-span-6 flex items-end justify-center relative h-[160px] xs:h-[220px] sm:h-[300px] lg:h-[600px] w-full mt-4 lg:mt-0 select-none">
             
+            {/* Studio Ambient Light Backdrops (Desktop only) */}
+            <div className="hidden lg:block absolute inset-0 z-0 pointer-events-none select-none">
+              <div className="absolute left-[20%] bottom-[15%] w-[40%] aspect-square bg-[#155A25]/12 rounded-full filter blur-[110px] mix-blend-screen" />
+              <div className="absolute left-[45%] bottom-[15%] w-[40%] aspect-square bg-[#7A0C11]/15 rounded-full filter blur-[110px] mix-blend-screen" />
+              <div className="absolute left-[70%] bottom-[15%] w-[40%] aspect-square bg-[#C5A880]/12 rounded-full filter blur-[110px] mix-blend-screen" />
+            </div>
+
             {/* Background Floating Logo Backdrop */}
             <motion.div
-              className="absolute top-[-75%] lg:top-[-3%] left-1/2 -translate-x-1/2 w-[60%] sm:w-[50%] lg:w-[65%] aspect-[2.2/1] z-40 lg:z-0 pointer-events-none select-none"
+              className="absolute top-[-75%] lg:top-[-3%] left-1/2 -translate-x-1/2 w-[60%] sm:w-[50%] lg:w-[65%] aspect-[2.2/1] z-40 lg:z-10 pointer-events-none select-none"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
@@ -205,7 +214,7 @@ export default function Hero() {
 
             {/* Limão Bottle (Green) - Left */}
             <motion.div
-              className="absolute left-[30%] bottom-[2%] lg:bottom-[0%] -translate-x-1/2 w-[25%] sm:w-[21%] lg:w-[18%] aspect-[1/2.8] z-10 cursor-pointer"
+              className="absolute left-[30%] bottom-[2%] lg:bottom-[0%] -translate-x-1/2 w-[25%] sm:w-[21%] lg:w-[18%] aspect-[1/2.8] z-20 cursor-pointer"
               style={{
                 x: macaX,
                 y: macaY,
@@ -219,7 +228,7 @@ export default function Hero() {
                   src="/images/vinagre-limao.webp"
                   alt="Vinagre de Limão"
                   fill
-                  className="object-contain drop-shadow-[0_25px_50px_rgba(21,90,37,0.55)] scale-[1.3] lg:scale-[2.2]"
+                  className="object-contain drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)] drop-shadow-[0_30px_60px_rgba(21,90,37,0.22)] brightness-[0.93] contrast-[1.03] saturate-[0.90] sepia-[0.04] scale-[1.3] lg:scale-[2.2] transition-all duration-300"
                 />
               </div>
             </motion.div>
@@ -240,7 +249,7 @@ export default function Hero() {
                   src="/images/vinagre-trad.webp"
                   alt="Vinagre Tradicional"
                   fill
-                  className="object-contain drop-shadow-[0_30px_60px_rgba(122,12,17,0.65)] scale-[1.3] lg:scale-[2.2]"
+                  className="object-contain drop-shadow-[0_15px_20px_rgba(0,0,0,0.55)] drop-shadow-[0_35px_70px_rgba(122,12,17,0.25)] brightness-[0.93] contrast-[1.03] saturate-[0.90] sepia-[0.04] scale-[1.3] lg:scale-[2.2] transition-all duration-300"
                 />
               </div>
             </motion.div>
@@ -261,7 +270,7 @@ export default function Hero() {
                   src="/images/vinagre-maçã.webp"
                   alt="Vinagre de Maçã"
                   fill
-                  className="object-contain drop-shadow-[0_25px_50px_rgba(197,168,128,0.55)] scale-[1.3] lg:scale-[2.2]"
+                  className="object-contain drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)] drop-shadow-[0_30px_60px_rgba(197,168,128,0.22)] brightness-[0.93] contrast-[1.03] saturate-[0.90] sepia-[0.04] scale-[1.3] lg:scale-[2.2] transition-all duration-300"
                 />
               </div>
             </motion.div>
@@ -312,21 +321,23 @@ export default function Hero() {
             className="object-cover object-center scale-105 select-none"
           />
           {/* Rich dark gradient overlays for mobile readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-saboroso-charcoal/90 via-saboroso-charcoal/60 to-saboroso-charcoal" />
+          <div className="absolute inset-0 bg-gradient-to-b from-saboroso-charcoal/95 via-transparent to-saboroso-charcoal z-10" />
+          {/* Radial glow vignette centering on mobile products */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_75%,transparent_10%,rgba(24,21,18,0.85)_80%)] z-10" />
         </div>
 
         {/* Content Container */}
-        <div className="relative z-10 flex-grow flex flex-col justify-center px-4 w-full">
+        <div className="relative z-20 flex-grow flex flex-col justify-center px-4 w-full">
           <motion.div
             className="flex flex-col items-center text-center max-w-md mx-auto"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-            {/* Outline pill badge */}
+            {/* Premium Glassmorphic Badge */}
             <motion.div
               variants={itemVariants}
-              className="inline-flex items-center gap-2 border border-saboroso-gold/40 rounded-full px-4 py-1.5 bg-saboroso-charcoal/50 backdrop-blur-sm mb-5"
+              className="inline-flex items-center gap-2 border border-white/10 rounded-full px-4 py-1.5 bg-white/5 backdrop-blur-md mb-5 shadow-lg shadow-black/10 transition-colors duration-300"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-saboroso-gold animate-ping" />
               <span className="text-[10px] font-semibold tracking-widest text-saboroso-gold uppercase">
@@ -349,7 +360,7 @@ export default function Hero() {
               variants={itemVariants}
               className="text-sm text-white/80 max-w-sm mb-6 leading-relaxed font-light"
             >
-              Vinagres e temperos produzidos com tradição, qualidade e inovação para transformar cada refeição.
+              Vinagres e temperos produtos com tradição, qualidade e inovação para transformar cada refeição.
             </motion.p>
 
             {/* Action Buttons */}
@@ -359,7 +370,7 @@ export default function Hero() {
             >
               <a
                 href="#produtos"
-                className="inline-flex items-center justify-center gap-3 bg-[#388E3C] hover:bg-[#2E7D32] text-white px-8 py-3.5 rounded-full font-bold text-sm tracking-wide uppercase transition-all duration-300 shadow-lg shadow-[#388E3C]/20"
+                className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-[#388E3C] to-[#2E7D32] hover:from-[#2E7D32] hover:to-[#1B5E20] text-white px-8 py-3.5 rounded-full font-bold text-sm tracking-wide uppercase transition-all duration-300 shadow-lg shadow-[#388E3C]/20"
               >
                 Conheça os Produtos
                 <ArrowRight className="w-4 h-4" />
@@ -367,7 +378,7 @@ export default function Hero() {
 
               <a
                 href="#empresa"
-                className="inline-flex items-center justify-center gap-3 border border-white/60 hover:border-saboroso-gold hover:text-saboroso-gold text-white px-8 py-3.5 rounded-full font-bold text-sm tracking-wide uppercase transition-all duration-300 bg-white/5"
+                className="inline-flex items-center justify-center gap-3 border border-white/10 hover:border-saboroso-gold/50 text-white px-8 py-3.5 rounded-full font-bold text-sm tracking-wide uppercase transition-all duration-300 bg-white/5"
               >
                 Nossa História
                 <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center">
@@ -388,7 +399,7 @@ export default function Hero() {
               transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
             >
               {/* Glowing backdrop shadow */}
-              <div className="w-full h-full bg-saboroso-gold/15 rounded-full filter blur-3xl" />
+              <div className="w-full h-full bg-saboroso-gold/20 rounded-full filter blur-3xl" />
             </motion.div>
 
             {/* Limão Bottle (Green) - Left */}
@@ -403,7 +414,7 @@ export default function Hero() {
                   src="/images/vinagre-limao.webp"
                   alt="Vinagre de Limão"
                   fill
-                  className="object-contain drop-shadow-[0_15px_30px_rgba(21,90,37,0.45)]"
+                  className="object-contain drop-shadow-[0_8px_10px_rgba(0,0,0,0.45)] drop-shadow-[0_20px_40px_rgba(21,90,37,0.22)] brightness-[0.93] contrast-[1.03] saturate-[0.90] sepia-[0.04]"
                 />
               </div>
             </motion.div>
@@ -420,7 +431,7 @@ export default function Hero() {
                   src="/images/vinagre-trad.webp"
                   alt="Vinagre Tradicional"
                   fill
-                  className="object-contain drop-shadow-[0_20px_40px_rgba(122,12,17,0.55)] scale-110"
+                  className="object-contain drop-shadow-[0_10px_12px_rgba(0,0,0,0.5)] drop-shadow-[0_25px_50px_rgba(122,12,17,0.25)] brightness-[0.93] contrast-[1.03] saturate-[0.90] sepia-[0.04] scale-110"
                 />
               </div>
             </motion.div>
@@ -437,7 +448,7 @@ export default function Hero() {
                   src="/images/vinagre-maçã.webp"
                   alt="Vinagre de Maçã"
                   fill
-                  className="object-contain drop-shadow-[0_15px_30px_rgba(197,168,128,0.45)]"
+                  className="object-contain drop-shadow-[0_8px_10px_rgba(0,0,0,0.45)] drop-shadow-[0_20px_40px_rgba(197,168,128,0.22)] brightness-[0.93] contrast-[1.03] saturate-[0.90] sepia-[0.04]"
                 />
               </div>
             </motion.div>
