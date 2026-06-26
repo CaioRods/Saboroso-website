@@ -28,7 +28,7 @@ export default function RecipeDetailPage() {
   if (!recipe) {
     return (
       <>
-        <Navbar onOpenContact={() => setIsContactOpen(true)} />
+        <Navbar onOpenContact={() => setIsContactOpen(true)} alwaysSolid={true} />
         <main className="min-h-screen bg-[#FAF9F6] flex flex-col items-center justify-center text-center p-4">
           <ChefHat className="w-16 h-16 text-stone-300 mb-4 animate-bounce" />
           <h1 className="text-2xl font-serif font-bold text-saboroso-charcoal mb-2">Receita não encontrada</h1>
@@ -88,7 +88,7 @@ export default function RecipeDetailPage() {
 
   return (
     <>
-      <Navbar onOpenContact={() => setIsContactOpen(true)} />
+      <Navbar onOpenContact={() => setIsContactOpen(true)} alwaysSolid={true} />
 
       {/* Main Body */}
       <main className="min-h-screen bg-[#FAF9F6] text-saboroso-charcoal pt-28 pb-20 relative overflow-hidden select-none">

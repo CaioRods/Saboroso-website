@@ -31,7 +31,7 @@ export default function RecipesPage() {
 
   return (
     <>
-      <Navbar onOpenContact={() => setIsContactOpen(true)} />
+      <Navbar onOpenContact={() => setIsContactOpen(true)} alwaysSolid={true} />
 
       {/* Hero Header Section */}
       <section className="relative h-[45vh] min-h-[350px] w-full flex items-center justify-center bg-saboroso-charcoal overflow-hidden select-none">

@@ -136,7 +136,7 @@ export const recipesData: Record<string, Recipe> = {
     difficulty: "Fácil",
     servings: "1 pote (400g)",
     category: "Conservas",
-    image: "https://images.unsplash.com/photo-1608797178974-15b35a61d121?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=1200&q=80",
     videoEmbedUrl: "https://www.youtube.com/embed/n4p_iLoxh7I",
     productUsedId: "tradicional",
     productUsedName: "Vinagre Tradicional Saboroso",

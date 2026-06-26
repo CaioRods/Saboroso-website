@@ -8,9 +8,10 @@ import { useWaveTransition } from "@/components/WaveTransition";
 
 interface NavbarProps {
   onOpenContact: () => void;
+  alwaysSolid?: boolean;
 }
 
-export default function Navbar({ onOpenContact }: NavbarProps) {
+export default function Navbar({ onOpenContact, alwaysSolid = false }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const { transitionTo } = useWaveTransition();
@@ -31,7 +32,7 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
     { name: "Home", href: "/#home" },
     { name: "Empresa", href: "/#empresa" },
     { name: "Produtos", href: "/#produtos", hasDropdown: true },
-    { name: "Receitas", href: "/receitas" },
+    { name: "Receitas", href: "/#receitas" },
     { name: "Distribuidores", href: "/#distribuidores" },
     { name: "Localização", href: "/#localizacao" },
     { name: "Contato", href: "/#contato" },
@@ -40,7 +41,7 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
   return (
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+        isScrolled || alwaysSolid
           ? "bg-saboroso-charcoal/90 backdrop-blur-md border-b border-saboroso-gold/10 py-3 shadow-lg"
           : "bg-transparent py-5"
       }`}
