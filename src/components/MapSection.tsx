@@ -134,9 +134,7 @@ export default function MapSection() {
                 {brazilMapData.map((state) => {
                   const status = getStateStatus(state.id, activeFilter);
                   const color = statusColors[status as keyof typeof statusColors].fill;
-                  
                   const commonProps = {
-                    key: state.id,
                     stroke: "#ffffff",
                     strokeWidth: "0.8",
                     fill: color,
@@ -149,6 +147,7 @@ export default function MapSection() {
                   if (state.type === "polygon" && state.points) {
                     return (
                       <polygon
+                        key={state.id}
                         {...commonProps}
                         points={state.points}
                       />
@@ -156,6 +155,7 @@ export default function MapSection() {
                   } else if (state.type === "path" && state.d) {
                     return (
                       <path
+                        key={state.id}
                         {...commonProps}
                         d={state.d}
                       />
