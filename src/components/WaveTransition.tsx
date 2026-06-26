@@ -4,6 +4,40 @@ import React, { createContext, useContext, useState, useEffect, useRef } from "r
 import { useRouter, usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 
+interface WaveColors {
+  frontStart: string;
+  frontEnd: string;
+  backStart: string;
+  backEnd: string;
+}
+
+const colorMap: Record<string, WaveColors> = {
+  tradicional: {
+    frontStart: "#8E161B",
+    frontEnd: "#50070A",
+    backStart: "#BD2127",
+    backEnd: "#7A0C11",
+  },
+  maca: {
+    frontStart: "#D2B48C",
+    frontEnd: "#8F744D",
+    backStart: "#E5D3B3",
+    backEnd: "#C5A880",
+  },
+  limao: {
+    frontStart: "#388E3C",
+    frontEnd: "#1B5E20",
+    backStart: "#4CAF50",
+    backEnd: "#2E7D32",
+  },
+  home: {
+    frontStart: "#2A2520",
+    frontEnd: "#120F0D",
+    backStart: "#3A342E",
+    backEnd: "#181512",
+  },
+};
+
 interface TransitionContextProps {
   transitionTo: (href: string, color?: string) => void;
   isTransitioning: boolean;
@@ -20,11 +54,11 @@ export function WaveTransitionProvider({ children }: { children: React.ReactNode
   const router = useRouter();
   const pathname = usePathname();
   const [step, setStep] = useState<"idle" | "entering" | "covered" | "exiting">("idle");
-  const [waveColor, setWaveColor] = useState("#C5A880"); // default brand gold
+  const [colors, setColors] = useState<WaveColors>(colorMap.home);
   const targetUrlRef = useRef<string | null>(null);
   const lastPathname = useRef(pathname);
 
-  const transitionTo = (href: string, color?: string) => {
+  const transitionTo = (href: string) => {
     if (step !== "idle") return; // prevent double transitions
 
     // If we are currently on a product page, and navigating back to home, set returning flag
@@ -44,16 +78,13 @@ export function WaveTransitionProvider({ children }: { children: React.ReactNode
       return;
     }
 
-    // Determine custom theme color if not explicitly provided
-    let chosenColor = color;
-    if (!chosenColor) {
-      if (href.includes("tradicional")) chosenColor = "#7A0C11"; // red
-      else if (href.includes("maca")) chosenColor = "#C5A880"; // gold
-      else if (href.includes("limao")) chosenColor = "#2E7D32"; // green
-      else chosenColor = "#181512"; // brand dark charcoal
-    }
+    // Determine custom theme color pair
+    let key = "home";
+    if (href.includes("tradicional")) key = "tradicional";
+    else if (href.includes("maca")) key = "maca";
+    else if (href.includes("limao")) key = "limao";
 
-    setWaveColor(chosenColor);
+    setColors(colorMap[key]);
     targetUrlRef.current = href;
     setStep("entering");
   };
@@ -66,7 +97,7 @@ export function WaveTransitionProvider({ children }: { children: React.ReactNode
         // Short delay to let the new page content mount
         const timer = setTimeout(() => {
           setStep("exiting");
-        }, 150);
+        }, 180);
         return () => clearTimeout(timer);
       }
     }
@@ -89,14 +120,16 @@ export function WaveTransitionProvider({ children }: { children: React.ReactNode
   };
 
   // SVG Path Morphing animations (Cubic Bezier S-Curve shapes)
-  const enterVariants = {
+  
+  // Wave 1: Back Wave (runs first, slightly different wave height and control points)
+  const enterVariantsBack = {
     initial: {
       d: "M 0,100 L 0,100 C 30,100 70,100 100,100 L 100,100 Z",
     },
     animate: {
       d: [
         "M 0,100 L 0,100 C 30,100 70,100 100,100 L 100,100 Z", // Flat bottom
-        "M 0,100 L 0,45 C 30,15 70,75 100,45 L 100,100 Z",    // S-curve wave crest rising
+        "M 0,100 L 0,40 C 40,10 60,70 100,40 L 100,100 Z",    // S-curve wave crest
         "M 0,100 L 0,0 C 30,0 70,0 100,0 L 100,100 Z",        // Flat top (solid cover)
       ],
       transition: {
@@ -107,18 +140,57 @@ export function WaveTransitionProvider({ children }: { children: React.ReactNode
     },
   };
 
-  const exitVariants = {
+  // Wave 2: Front Wave (runs with delay, offset wave crest)
+  const enterVariantsFront = {
+    initial: {
+      d: "M 0,100 L 0,100 C 30,100 70,100 100,100 L 100,100 Z",
+    },
+    animate: {
+      d: [
+        "M 0,100 L 0,100 C 30,100 70,100 100,100 L 100,100 Z", // Flat bottom
+        "M 0,100 L 0,48 C 25,20 75,80 100,48 L 100,100 Z",    // Layered crest
+        "M 0,100 L 0,0 C 30,0 70,0 100,0 L 100,100 Z",        // Flat top (solid cover)
+      ],
+      transition: {
+        duration: 0.85,
+        delay: 0.12,
+        times: [0, 0.5, 1],
+        ease: ["easeIn", "easeOut"] as any,
+      },
+    },
+  };
+
+  const exitVariantsBack = {
     initial: {
       d: "M 0,0 L 0,100 C 30,100 70,100 100,100 L 100,0 Z",
     },
     animate: {
       d: [
         "M 0,0 L 0,100 C 30,100 70,100 100,100 L 100,0 Z",    // Flat top (solid cover)
-        "M 0,0 L 0,45 C 30,75 70,15 100,45 L 100,0 Z",        // S-curve wave retracting
+        "M 0,0 L 0,40 C 40,70 60,10 100,40 L 100,0 Z",        // S-curve wave retracting
         "M 0,0 L 0,0 C 30,0 70,0 100,0 L 100,0 Z",            // Flat top (empty)
       ],
       transition: {
         duration: 0.85,
+        times: [0, 0.5, 1],
+        ease: ["easeIn", "easeOut"] as any,
+      },
+    },
+  };
+
+  const exitVariantsFront = {
+    initial: {
+      d: "M 0,0 L 0,100 C 30,100 70,100 100,100 L 100,0 Z",
+    },
+    animate: {
+      d: [
+        "M 0,0 L 0,100 C 30,100 70,100 100,100 L 100,0 Z",    // Flat top (solid cover)
+        "M 0,0 L 0,48 C 25,78 75,18 100,48 L 100,0 Z",        // Layered crest retracting
+        "M 0,0 L 0,0 C 30,0 70,0 100,0 L 100,0 Z",            // Flat top (empty)
+      ],
+      transition: {
+        duration: 0.85,
+        delay: 0.12,
         times: [0, 0.5, 1],
         ease: ["easeIn", "easeOut"] as any,
       },
@@ -136,14 +208,30 @@ export function WaveTransitionProvider({ children }: { children: React.ReactNode
             preserveAspectRatio="none"
           >
             <defs>
+              <linearGradient id="wave-grad-back" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor={colors.backStart} />
+                <stop offset="100%" stopColor={colors.backEnd} />
+              </linearGradient>
+              <linearGradient id="wave-grad-front" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor={colors.frontStart} />
+                <stop offset="100%" stopColor={colors.frontEnd} />
+              </linearGradient>
               <filter id="wave-shadow-enter" x="-10%" y="-30%" width="120%" height="160%">
-                <feDropShadow dx="0" dy="10" stdDeviation="12" floodColor="rgba(0, 0, 0, 0.5)" />
+                <feDropShadow dx="0" dy="10" stdDeviation="12" floodColor="rgba(0, 0, 0, 0.45)" />
               </filter>
             </defs>
+            {/* Back Wave (runs first) */}
             <motion.path
-              fill={waveColor}
+              fill="url(#wave-grad-back)"
+              variants={enterVariantsBack}
+              initial="initial"
+              animate="animate"
+            />
+            {/* Front Wave (runs with delay and casts shadow) */}
+            <motion.path
+              fill="url(#wave-grad-front)"
               filter="url(#wave-shadow-enter)"
-              variants={enterVariants}
+              variants={enterVariantsFront}
               initial="initial"
               animate="animate"
               onAnimationComplete={handleEnteringComplete}
@@ -153,7 +241,9 @@ export function WaveTransitionProvider({ children }: { children: React.ReactNode
         {step === "covered" && (
           <div
             className="absolute inset-0 w-full h-full pointer-events-auto"
-            style={{ backgroundColor: waveColor }}
+            style={{
+              background: `linear-gradient(180deg, ${colors.frontStart} 0%, ${colors.frontEnd} 100%)`,
+            }}
           />
         )}
         {step === "exiting" && (
@@ -163,14 +253,30 @@ export function WaveTransitionProvider({ children }: { children: React.ReactNode
             preserveAspectRatio="none"
           >
             <defs>
+              <linearGradient id="wave-grad-back-exit" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor={colors.backStart} />
+                <stop offset="100%" stopColor={colors.backEnd} />
+              </linearGradient>
+              <linearGradient id="wave-grad-front-exit" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor={colors.frontStart} />
+                <stop offset="100%" stopColor={colors.frontEnd} />
+              </linearGradient>
               <filter id="wave-shadow-exit" x="-10%" y="-30%" width="120%" height="160%">
-                <feDropShadow dx="0" dy="10" stdDeviation="12" floodColor="rgba(0, 0, 0, 0.5)" />
+                <feDropShadow dx="0" dy="10" stdDeviation="12" floodColor="rgba(0, 0, 0, 0.45)" />
               </filter>
             </defs>
+            {/* Back Wave (runs first) */}
             <motion.path
-              fill={waveColor}
+              fill="url(#wave-grad-back-exit)"
+              variants={exitVariantsBack}
+              initial="initial"
+              animate="animate"
+            />
+            {/* Front Wave (runs with delay, triggers exit completion) */}
+            <motion.path
+              fill="url(#wave-grad-front-exit)"
               filter="url(#wave-shadow-exit)"
-              variants={exitVariants}
+              variants={exitVariantsFront}
               initial="initial"
               animate="animate"
               onAnimationComplete={handleExitingComplete}
