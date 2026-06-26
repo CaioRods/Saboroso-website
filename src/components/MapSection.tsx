@@ -3,10 +3,16 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { MapPin } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { brazilMapData } from "./brazilMapData";
 
 export default function MapSection() {
   const [activeFilter, setActiveFilter] = useState("atacadistas");
+  const [hoveredState, setHoveredState] = useState<{
+    id: string;
+    name: string;
+    x: number;
+    y: number;
+  } | null>(null);
 
   const filters = [
     { id: "atacadistas", label: "Atacadistas" },
@@ -14,33 +20,28 @@ export default function MapSection() {
     { id: "supermercados", label: "Supermercados" },
   ];
 
-  const presenceData: Record<string, {
-    norte: string;
-    nordeste: string;
-    centro: string;
-    sudeste: string;
-    sul: string;
-  }> = {
+  // Specific state presence data showing SP as active hub, and others for future expansion
+  const presenceData: Record<string, Record<string, string>> = {
     atacadistas: {
-      norte: "em-breve",
-      nordeste: "forte",
-      centro: "expansao",
-      sudeste: "forte",
-      sul: "parcial",
+      SP: "forte",
+      RJ: "expansao",
+      MG: "expansao",
+      PR: "expansao",
     },
     distribuidores: {
-      norte: "expansao",
-      nordeste: "forte",
-      centro: "forte",
-      sudeste: "forte",
-      sul: "forte",
+      SP: "forte",
+      RJ: "expansao",
+      MG: "expansao",
+      ES: "expansao",
+      PR: "expansao",
+      SC: "expansao",
+      RS: "expansao",
     },
     supermercados: {
-      norte: "parcial",
-      nordeste: "forte",
-      centro: "expansao",
-      sudeste: "forte",
-      sul: "forte",
+      SP: "forte",
+      RJ: "expansao",
+      MG: "expansao",
+      PR: "expansao",
     },
   };
 
@@ -51,7 +52,26 @@ export default function MapSection() {
     "em-breve": { fill: "#D1D5DB", label: "Em Breve", dot: "bg-gray-300" },
   };
 
-  const activeRegions = presenceData[activeFilter];
+  const getStateStatus = (stateId: string, filterId: string): string => {
+    return presenceData[filterId]?.[stateId] || "em-breve";
+  };
+
+  const handleMouseMove = (e: React.MouseEvent, stateId: string, stateName: string) => {
+    const container = e.currentTarget.closest(".map-container");
+    if (container) {
+      const rect = container.getBoundingClientRect();
+      setHoveredState({
+        id: stateId,
+        name: stateName,
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top - 12 // Position slightly above the cursor
+      });
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredState(null);
+  };
 
   return (
     <section
@@ -62,7 +82,7 @@ export default function MapSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Left Text and Filters */}
-          <div className="lg:col-span-4 flex flex-col items-start">
+          <div className="lg:col-span-4 flex flex-col items-start text-left">
             <div className="flex items-center gap-2 mb-4">
               <MapPin className="w-4.5 h-4.5 text-saboroso-gold" />
               <span className="text-xs font-semibold tracking-widest text-saboroso-gold uppercase">
@@ -76,7 +96,7 @@ export default function MapSection() {
             </h2>
             
             <p className="text-saboroso-charcoal/70 text-sm sm:text-base leading-relaxed mb-8 font-light">
-              Encontre nossos produtos perto de você. Selecione o tipo de estabelecimento:
+              Encontre nossos produtos perto de você. Selecione o tipo de estabelecimento para visualizar a nossa distribuição:
             </p>
 
             {/* Filter buttons */}
@@ -87,7 +107,7 @@ export default function MapSection() {
                   <button
                     key={filter.id}
                     onClick={() => setActiveFilter(filter.id)}
-                    className={`px-6 py-3 rounded-full text-xs font-bold tracking-wide uppercase transition-all duration-300 text-left border ${
+                    className={`px-6 py-3 rounded-full text-xs font-bold tracking-wide uppercase transition-all duration-300 text-left border cursor-pointer ${
                       isActive
                         ? "bg-saboroso-red border-saboroso-red text-white shadow-md shadow-saboroso-red/25"
                         : "bg-white border-saboroso-gold/20 text-saboroso-charcoal hover:border-saboroso-gold hover:bg-saboroso-cream"
@@ -103,57 +123,68 @@ export default function MapSection() {
           {/* Center Map Box */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center relative select-none">
             
-            {/* SVG Regions Map of Brazil */}
-            <svg
-              viewBox="0 0 500 500"
-              className="w-full max-w-[400px] h-auto filter drop-shadow-xl"
-            >
-              {/* Norte */}
-              <motion.path
-                d="M 250 250 L 60 312 A 200 200 0 0 1 250 50 Z"
-                fill={statusColors[activeRegions.norte as keyof typeof statusColors].fill}
-                stroke="#ffffff"
-                strokeWidth="2"
-                animate={{ transition: { duration: 0.5 } }}
-                className="cursor-pointer transition-opacity hover:opacity-85"
-              />
-              {/* Nordeste */}
-              <motion.path
-                d="M 250 250 L 250 50 A 200 200 0 0 1 447 215 Z"
-                fill={statusColors[activeRegions.nordeste as keyof typeof statusColors].fill}
-                stroke="#ffffff"
-                strokeWidth="2"
-                animate={{ transition: { duration: 0.5 } }}
-                className="cursor-pointer transition-opacity hover:opacity-85"
-              />
-              {/* Centro-Oeste */}
-              <motion.path
-                d="M 250 250 L 182 438 A 200 200 0 0 1 60 312 Z"
-                fill={statusColors[activeRegions.centro as keyof typeof statusColors].fill}
-                stroke="#ffffff"
-                strokeWidth="2"
-                animate={{ transition: { duration: 0.5 } }}
-                className="cursor-pointer transition-opacity hover:opacity-85"
-              />
-              {/* Sudeste */}
-              <motion.path
-                d="M 250 250 L 447 215 A 200 200 0 0 1 379 403 Z"
-                fill={statusColors[activeRegions.sudeste as keyof typeof statusColors].fill}
-                stroke="#ffffff"
-                strokeWidth="2"
-                animate={{ transition: { duration: 0.5 } }}
-                className="cursor-pointer transition-opacity hover:opacity-85"
-              />
-              {/* Sul */}
-              <motion.path
-                d="M 250 250 L 379 403 A 200 200 0 0 1 182 438 Z"
-                fill={statusColors[activeRegions.sul as keyof typeof statusColors].fill}
-                stroke="#ffffff"
-                strokeWidth="2"
-                animate={{ transition: { duration: 0.5 } }}
-                className="cursor-pointer transition-opacity hover:opacity-85"
-              />
-            </svg>
+            {/* Map Container */}
+            <div className="map-container relative w-full flex justify-center">
+              
+              {/* SVG Map of Brazil */}
+              <svg
+                viewBox="0 0 353.845 367.766"
+                className="w-full max-w-[400px] h-auto filter drop-shadow-xl"
+              >
+                {brazilMapData.map((state) => {
+                  const status = getStateStatus(state.id, activeFilter);
+                  const color = statusColors[status as keyof typeof statusColors].fill;
+                  
+                  const commonProps = {
+                    key: state.id,
+                    stroke: "#ffffff",
+                    strokeWidth: "0.8",
+                    fill: color,
+                    onMouseMove: (e: React.MouseEvent) => handleMouseMove(e, state.id, state.name),
+                    onMouseLeave: handleMouseLeave,
+                    style: { transition: "fill 0.3s ease" },
+                    className: "cursor-pointer hover:opacity-85 hover:stroke-[1.5px]"
+                  };
+
+                  if (state.type === "polygon" && state.points) {
+                    return (
+                      <polygon
+                        {...commonProps}
+                        points={state.points}
+                      />
+                    );
+                  } else if (state.type === "path" && state.d) {
+                    return (
+                      <path
+                        {...commonProps}
+                        d={state.d}
+                      />
+                    );
+                  }
+                  return null;
+                })}
+              </svg>
+
+              {/* Floating Tooltip */}
+              {hoveredState && (
+                <div
+                  className="absolute z-30 pointer-events-none bg-saboroso-charcoal/95 text-white text-xs py-2 px-3.5 rounded-xl border border-saboroso-gold/20 shadow-xl backdrop-blur-sm transition-all duration-75 flex flex-col items-start gap-1"
+                  style={{
+                    left: hoveredState.x,
+                    top: hoveredState.y,
+                    transform: "translate(-50%, -100%)", // center horizontally and place above cursor
+                  }}
+                >
+                  <span className="font-bold text-white">{hoveredState.name} ({hoveredState.id})</span>
+                  <div className="flex items-center gap-1.5 mt-0.5">
+                    <span className={`w-2 h-2 rounded-full ${statusColors[getStateStatus(hoveredState.id, activeFilter) as keyof typeof statusColors].dot}`} />
+                    <span className="text-[10px] text-white/70 font-semibold uppercase tracking-wider">
+                      {statusColors[getStateStatus(hoveredState.id, activeFilter) as keyof typeof statusColors].label}
+                    </span>
+                  </div>
+                </div>
+              )}
+            </div>
 
             {/* Map Legend Overlay */}
             <div className="mt-8 bg-white border border-saboroso-gold/10 p-4 rounded-2xl flex flex-wrap gap-4 justify-center shadow-sm">
