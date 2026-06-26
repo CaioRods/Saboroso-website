@@ -203,7 +203,7 @@ export default function Hero() {
               </div>
             </motion.div>
 
-            {/* Limão Bottle (Green) - Left */}
+            {/* Tradicional Bottle (Red) - Left */}
             <motion.div
               className="absolute left-[30%] bottom-[2%] lg:bottom-[0%] -translate-x-1/2 w-[25%] sm:w-[21%] lg:w-[18%] aspect-[1/2.8] z-10 cursor-pointer"
               style={{
@@ -216,15 +216,15 @@ export default function Hero() {
             >
               <div className="relative w-full h-full animate-float flex justify-center items-center">
                 <Image
-                  src="/images/vinagre-limao.webp"
-                  alt="Vinagre de Limão"
+                  src="/images/vinagre-trad.webp"
+                  alt="Vinagre Tradicional"
                   fill
-                  className="object-contain drop-shadow-[0_25px_50px_rgba(21,90,37,0.55)] scale-[1.3] lg:scale-[2.2]"
+                  className="object-contain drop-shadow-[0_25px_50px_rgba(122,12,17,0.55)] scale-[1.3] lg:scale-[2.2]"
                 />
               </div>
             </motion.div>
 
-            {/* Tradicional Bottle (Red) - Middle & Front */}
+            {/* Maçã Bottle (Orange) - Middle & Front */}
             <motion.div
               className="absolute left-[50%] bottom-[-2%] lg:bottom-[-4%] -translate-x-1/2 w-[28%] sm:w-[24%] lg:w-[21%] aspect-[1/2.8] z-30 cursor-pointer"
               style={{
@@ -237,15 +237,15 @@ export default function Hero() {
             >
               <div className="relative w-full h-full animate-float-delayed flex justify-center items-center">
                 <Image
-                  src="/images/vinagre-trad.webp"
-                  alt="Vinagre Tradicional"
+                  src="/images/vinagre-maçã.webp"
+                  alt="Vinagre de Maçã"
                   fill
-                  className="object-contain drop-shadow-[0_30px_60px_rgba(122,12,17,0.65)] scale-[1.3] lg:scale-[2.2]"
+                  className="object-contain drop-shadow-[0_30px_60px_rgba(197,168,128,0.65)] scale-[1.3] lg:scale-[2.2]"
                 />
               </div>
             </motion.div>
 
-            {/* Maçã Bottle (Orange) - Right */}
+            {/* Limão Bottle (Green) - Right */}
             <motion.div
               className="absolute left-[70%] bottom-[2%] lg:bottom-[0%] -translate-x-1/2 w-[25%] sm:w-[21%] lg:w-[18%] aspect-[1/2.8] z-20 cursor-pointer"
               style={{
@@ -258,10 +258,10 @@ export default function Hero() {
             >
               <div className="relative w-full h-full animate-float-delayed-more flex justify-center items-center">
                 <Image
-                  src="/images/vinagre-maçã.webp"
-                  alt="Vinagre de Maçã"
+                  src="/images/vinagre-limao.webp"
+                  alt="Vinagre de Limão"
                   fill
-                  className="object-contain drop-shadow-[0_25px_50px_rgba(197,168,128,0.55)] scale-[1.3] lg:scale-[2.2]"
+                  className="object-contain drop-shadow-[0_25px_50px_rgba(21,90,37,0.55)] scale-[1.3] lg:scale-[2.2]"
                 />
               </div>
             </motion.div>
@@ -391,7 +391,7 @@ export default function Hero() {
               <div className="w-full h-full bg-saboroso-gold/15 rounded-full filter blur-3xl" />
             </motion.div>
 
-            {/* Limão Bottle (Green) - Left */}
+            {/* Tradicional Bottle (Red) - Left */}
             <motion.div
               className="absolute left-[15%] bottom-[8%] w-[26%] aspect-[1/2.8] z-10"
               variants={bottleVariants1}
@@ -400,15 +400,15 @@ export default function Hero() {
             >
               <div className="relative w-full h-full animate-float flex justify-center items-center">
                 <Image
-                  src="/images/vinagre-limao.webp"
-                  alt="Vinagre de Limão"
+                  src="/images/vinagre-trad.webp"
+                  alt="Vinagre Tradicional"
                   fill
-                  className="object-contain drop-shadow-[0_15px_30px_rgba(21,90,37,0.45)]"
+                  className="object-contain drop-shadow-[0_15px_30px_rgba(122,12,17,0.45)]"
                 />
               </div>
             </motion.div>
 
-            {/* Tradicional Bottle (Red) - Middle & Front */}
+            {/* Maçã Bottle (Orange) - Middle & Front */}
             <motion.div
               className="absolute left-[50%] bottom-[0%] -translate-x-1/2 w-[31%] aspect-[1/2.8] z-30"
               variants={bottleVariants2}
@@ -417,15 +417,15 @@ export default function Hero() {
             >
               <div className="relative w-full h-full animate-float-delayed flex justify-center items-center">
                 <Image
-                  src="/images/vinagre-trad.webp"
-                  alt="Vinagre Tradicional"
+                  src="/images/vinagre-maçã.webp"
+                  alt="Vinagre de Maçã"
                   fill
-                  className="object-contain drop-shadow-[0_20px_40px_rgba(122,12,17,0.55)] scale-110"
+                  className="object-contain drop-shadow-[0_20px_40px_rgba(197,168,128,0.55)] scale-110"
                 />
               </div>
             </motion.div>
 
-            {/* Maçã Bottle (Orange) - Right */}
+            {/* Limão Bottle (Green) - Right */}
             <motion.div
               className="absolute right-[15%] bottom-[8%] w-[26%] aspect-[1/2.8] z-20"
               variants={bottleVariants3}
@@ -434,10 +434,10 @@ export default function Hero() {
             >
               <div className="relative w-full h-full animate-float-delayed-more flex justify-center items-center">
                 <Image
-                  src="/images/vinagre-maçã.webp"
-                  alt="Vinagre de Maçã"
+                  src="/images/vinagre-limao.webp"
+                  alt="Vinagre de Limão"
                   fill
-                  className="object-contain drop-shadow-[0_15px_30px_rgba(197,168,128,0.45)]"
+                  className="object-contain drop-shadow-[0_15px_30px_rgba(21,90,37,0.45)]"
                 />
               </div>
             </motion.div>
