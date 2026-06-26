@@ -54,12 +54,13 @@ export function WaveTransitionProvider({ children }: { children: React.ReactNode
   const router = useRouter();
   const pathname = usePathname();
   const [step, setStep] = useState<"idle" | "entering" | "covered" | "exiting">("idle");
+  const [isAnchorBlurring, setIsAnchorBlurring] = useState(false);
   const [colors, setColors] = useState<WaveColors>(colorMap.home);
   const targetUrlRef = useRef<string | null>(null);
   const lastPathname = useRef(pathname);
 
   const transitionTo = (href: string) => {
-    if (step !== "idle") return; // prevent double transitions
+    if (step !== "idle" || isAnchorBlurring) return; // prevent double transitions
 
     // If we are currently on a product page, and navigating back to home, set returning flag
     if (pathname.startsWith("/produtos") && (href === "/" || href.startsWith("/#") || href.startsWith("#"))) {
@@ -70,11 +71,21 @@ export function WaveTransitionProvider({ children }: { children: React.ReactNode
     if ((href.startsWith("#") || href.startsWith("/#")) && pathname === "/") {
       const anchor = href.replace("/#", "").replace("#", "");
       const element = document.getElementById(anchor);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      } else {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
+      
+      setIsAnchorBlurring(true);
+      
+      setTimeout(() => {
+        if (element) {
+          element.scrollIntoView({ behavior: "auto" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "auto" });
+        }
+        
+        setTimeout(() => {
+          setIsAnchorBlurring(false);
+        }, 50);
+      }, 350);
+      
       return;
     }
 
@@ -198,8 +209,19 @@ export function WaveTransitionProvider({ children }: { children: React.ReactNode
   };
 
   return (
-    <TransitionContext.Provider value={{ transitionTo, isTransitioning: step !== "idle" }}>
-      {children}
+    <TransitionContext.Provider value={{ transitionTo, isTransitioning: step !== "idle" || isAnchorBlurring }}>
+      <div
+        className="min-h-full flex flex-col flex-grow"
+        style={{
+          transition: "filter 0.35s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.35s cubic-bezier(0.25, 1, 0.5, 1), transform 0.35s cubic-bezier(0.25, 1, 0.5, 1)",
+          filter: isAnchorBlurring ? "blur(18px)" : "none",
+          opacity: isAnchorBlurring ? 0.05 : 1,
+          transform: isAnchorBlurring ? "scale(0.96)" : "scale(1)",
+          willChange: "filter, opacity, transform",
+        }}
+      >
+        {children}
+      </div>
       <div className="fixed inset-0 pointer-events-none z-[999999] overflow-hidden select-none">
         {step === "entering" && (
           <svg
