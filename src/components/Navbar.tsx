@@ -47,7 +47,7 @@ export default function Navbar() {
           {/* Logo */}
           <a href="#home" className="flex-shrink-0 relative w-44 h-14 xl:w-52 xl:h-16 2xl:w-64 2xl:h-20 transition-all">
             <Image
-              src="/images/logo.png"
+              src="/images/logo.webp"
               alt="Saboroso Logo"
               fill
               className="object-contain scale-[1.35]"

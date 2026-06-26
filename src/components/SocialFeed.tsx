@@ -13,7 +13,7 @@ export default function SocialFeed({ showSocial }: SocialFeedProps) {
   const posts = [
     { 
       id: 1, 
-      img: "/images/posts/1.png", 
+      img: "/images/posts/1.webp", 
       likes: "142", 
       comments: "24", 
       date: "12 de junho às 14:32", 
@@ -21,7 +21,7 @@ export default function SocialFeed({ showSocial }: SocialFeedProps) {
     },
     { 
       id: 2, 
-      img: "/images/posts/2.png", 
+      img: "/images/posts/2.webp", 
       likes: "96", 
       comments: "15", 
       date: "8 de junho às 10:15", 
@@ -29,7 +29,7 @@ export default function SocialFeed({ showSocial }: SocialFeedProps) {
     },
     { 
       id: 3, 
-      img: "/images/posts/3.png", 
+      img: "/images/posts/3.webp", 
       likes: "284", 
       comments: "52", 
       date: "3 de junho às 18:05", 
@@ -37,7 +37,7 @@ export default function SocialFeed({ showSocial }: SocialFeedProps) {
     },
     { 
       id: 4, 
-      img: "/images/posts/4.png", 
+      img: "/images/posts/4.webp", 
       likes: "195", 
       comments: "31", 
       date: "28 de maio às 15:40", 
@@ -45,7 +45,7 @@ export default function SocialFeed({ showSocial }: SocialFeedProps) {
     },
     { 
       id: 5, 
-      img: "/images/posts/5.png", 
+      img: "/images/posts/5.webp", 
       likes: "167", 
       comments: "28", 
       date: "22 de maio às 09:20", 
@@ -53,7 +53,7 @@ export default function SocialFeed({ showSocial }: SocialFeedProps) {
     },
     { 
       id: 6, 
-      img: "/images/posts/6.png", 
+      img: "/images/posts/6.webp", 
       likes: "215", 
       comments: "40", 
       date: "15 de maio às 11:10", 
@@ -61,7 +61,7 @@ export default function SocialFeed({ showSocial }: SocialFeedProps) {
     },
     { 
       id: 7, 
-      img: "/images/posts/7.png", 
+      img: "/images/posts/7.webp", 
       likes: "183", 
       comments: "22", 
       date: "10 de maio às 16:30", 
@@ -138,7 +138,7 @@ export default function SocialFeed({ showSocial }: SocialFeedProps) {
                       <div className="flex items-center gap-3">
                         <div className="relative w-10 h-10 rounded-full border border-saboroso-gold/20 overflow-hidden bg-saboroso-charcoal">
                           <Image
-                            src="/images/logo.png"
+                            src="/images/logo.webp"
                             alt="Saboroso Avatar"
                             fill
                             className="object-contain scale-[1.3]"

@@ -65,7 +65,7 @@ export default function LoadingScreen() {
                 className="relative w-[340px] h-[136px] sm:w-[460px] sm:h-[184px]"
               >
                 <Image
-                  src="/images/logo.png"
+                  src="/images/logo.webp"
                   alt="Saboroso Loading"
                   fill
                   className="object-contain"

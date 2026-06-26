@@ -104,7 +104,7 @@ export default function Hero() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/background.png"
+          src="/images/background.webp"
           alt="Saboroso Background"
           fill
           priority
@@ -194,7 +194,7 @@ export default function Hero() {
                 {/* Glowing backdrop shadow */}
                 <div className="absolute inset-0 bg-saboroso-gold/15 rounded-full filter blur-3xl opacity-80" />
                 <Image
-                  src="/images/logo-hero.png"
+                  src="/images/logo-hero.webp"
                   alt="Saboroso Logo Background"
                   fill
                   className="object-contain scale-[1.3] lg:scale-[2.8] drop-shadow-[0_15px_30px_rgba(0,0,0,0.55)]"
@@ -216,7 +216,7 @@ export default function Hero() {
             >
               <div className="relative w-full h-full animate-float flex justify-center items-center">
                 <Image
-                  src="/images/vinagre-limao.png"
+                  src="/images/vinagre-limao.webp"
                   alt="Vinagre de Limão"
                   fill
                   className="object-contain drop-shadow-[0_25px_50px_rgba(21,90,37,0.55)] scale-[1.3] lg:scale-[2.2]"
@@ -237,7 +237,7 @@ export default function Hero() {
             >
               <div className="relative w-full h-full animate-float-delayed flex justify-center items-center">
                 <Image
-                  src="/images/vinagre-trad.png"
+                  src="/images/vinagre-trad.webp"
                   alt="Vinagre Tradicional"
                   fill
                   className="object-contain drop-shadow-[0_30px_60px_rgba(122,12,17,0.65)] scale-[1.3] lg:scale-[2.2]"
@@ -258,7 +258,7 @@ export default function Hero() {
             >
               <div className="relative w-full h-full animate-float-delayed-more flex justify-center items-center">
                 <Image
-                  src="/images/vinagre-maçã.png"
+                  src="/images/vinagre-maçã.webp"
                   alt="Vinagre de Maçã"
                   fill
                   className="object-contain drop-shadow-[0_25px_50px_rgba(197,168,128,0.55)] scale-[1.3] lg:scale-[2.2]"
@@ -305,7 +305,7 @@ export default function Hero() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/background.png"
+            src="/images/background.webp"
             alt="Saboroso Background"
             fill
             priority
@@ -400,7 +400,7 @@ export default function Hero() {
             >
               <div className="relative w-full h-full animate-float flex justify-center items-center">
                 <Image
-                  src="/images/vinagre-limao.png"
+                  src="/images/vinagre-limao.webp"
                   alt="Vinagre de Limão"
                   fill
                   className="object-contain drop-shadow-[0_15px_30px_rgba(21,90,37,0.45)]"
@@ -417,7 +417,7 @@ export default function Hero() {
             >
               <div className="relative w-full h-full animate-float-delayed flex justify-center items-center">
                 <Image
-                  src="/images/vinagre-trad.png"
+                  src="/images/vinagre-trad.webp"
                   alt="Vinagre Tradicional"
                   fill
                   className="object-contain drop-shadow-[0_20px_40px_rgba(122,12,17,0.55)] scale-110"
@@ -434,7 +434,7 @@ export default function Hero() {
             >
               <div className="relative w-full h-full animate-float-delayed-more flex justify-center items-center">
                 <Image
-                  src="/images/vinagre-maçã.png"
+                  src="/images/vinagre-maçã.webp"
                   alt="Vinagre de Maçã"
                   fill
                   className="object-contain drop-shadow-[0_15px_30px_rgba(197,168,128,0.45)]"

@@ -63,28 +63,28 @@ export default function Timeline() {
       subtitle: "Fundação",
       title: "Nasce a Saboroso",
       desc: "Nasce a Saboroso com o compromisso de levar sabor e qualidade às famílias.",
-      image: "https://images.unsplash.com/photo-1542224566-6e85f2e6772f?auto=format&fit=crop&w=600&q=80", // Vintage/aesthetic look
+      image: "/images/1948.webp",
     },
     {
       year: "1970",
       subtitle: "Expansão Regional",
       title: "Crescimento e presença",
       desc: "Crescimento e presença em novas regiões, levando nossos produtos ainda mais longe.",
-      image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=600&q=80", // Delivery/Logistics vintage
+      image: "/images/1970.webp",
     },
     {
       year: "1990",
       subtitle: "Modernização",
       title: "Investimento em tecnologia",
       desc: "Investimentos em tecnologia e processos para garantir ainda mais qualidade e eficiência.",
-      image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80", // Modern factory tanks
+      image: "/images/1990.webp",
     },
     {
-      year: "2025",
+      year: "2026",
       subtitle: "Nova Geração",
       title: "Inovação e novas linhas",
       desc: "Inovação e novas linhas de produtos para continuar fazendo parte da sua história.",
-      image: "https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=600&q=80", // Modern salad / fresh food layout
+      image: "/images/2026.webp",
     },
   ];
 

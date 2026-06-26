@@ -16,7 +16,7 @@ export default function Footer() {
           <div className="lg:col-span-4 flex flex-col items-start">
             <div className="relative w-56 h-20 sm:w-64 sm:h-24 mb-4">
               <Image
-                src="/images/logo.png"
+                src="/images/logo.webp"
                 alt="Saboroso Logo"
                 fill
                 className="object-contain"
