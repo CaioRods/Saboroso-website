@@ -380,24 +380,15 @@ export default function Hero() {
           {/* Bottles Display Container (Responsive aspect-ratio based) */}
           <div className="relative w-full max-w-[340px] aspect-[4/3] mx-auto mt-10 mb-2 flex items-end justify-center select-none">
             
-            {/* Background Floating Logo Backdrop */}
+            {/* Background Glow Backdrop */}
             <motion.div
-              className="absolute top-[0%] left-1/2 -translate-x-1/2 w-[70%] aspect-[2.2/1] z-0 pointer-events-none"
+              className="absolute bottom-[10%] left-1/2 -translate-x-1/2 w-[60%] aspect-square z-0 pointer-events-none"
               initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 0.85, scale: 1 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
             >
-              <div className="relative w-full h-full flex justify-center items-center">
-                {/* Glowing backdrop shadow */}
-                <div className="absolute inset-0 bg-saboroso-gold/15 rounded-full filter blur-2xl opacity-75" />
-                <Image
-                  src="/images/logo-hero.png"
-                  alt="Saboroso Logo Background"
-                  fill
-                  className="object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.45)]"
-                  priority
-                />
-              </div>
+              {/* Glowing backdrop shadow */}
+              <div className="w-full h-full bg-saboroso-gold/15 rounded-full filter blur-3xl" />
             </motion.div>
 
             {/* Limão Bottle (Green) - Left */}
