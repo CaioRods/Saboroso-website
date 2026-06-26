@@ -218,10 +218,10 @@ export default function ProductPage() {
           </button>
 
           {/* Dynamic Grid Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-20">
             
             {/* Left Image Showcase */}
-            <div className="lg:col-span-5 flex justify-center relative min-h-[320px] xs:min-h-[400px] lg:min-h-[550px] w-full">
+            <div className="lg:col-span-5 flex items-start justify-center relative min-h-[320px] xs:min-h-[400px] lg:min-h-[500px] w-full">
               {/* Product specific glow halo */}
               <div
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] aspect-square rounded-full filter blur-[90px] opacity-80 z-0 pointer-events-none"
