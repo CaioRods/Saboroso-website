@@ -97,9 +97,9 @@ export default function Hero() {
   const limaoScale = useTransform(smoothProgress, [0, 0.7, 1.0], [1.0, 1.25, 1.25]);
 
   return (
-    <div id="home" ref={containerRef} className="relative h-[200vh] w-full bg-saboroso-charcoal">
+    <div id="home" ref={containerRef} className="relative h-auto lg:h-[200vh] w-full bg-saboroso-charcoal">
       <section
-        className="sticky top-0 h-screen flex items-center justify-center bg-saboroso-charcoal overflow-hidden pt-20 pb-8 lg:py-0 w-full"
+        className="hidden lg:flex sticky top-0 h-screen items-center justify-center bg-saboroso-charcoal overflow-hidden pt-20 pb-8 lg:py-0 w-full"
       >
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
@@ -298,6 +298,177 @@ export default function Hero() {
           <ChevronDown className="w-4 h-4 text-white/50 group-hover:text-saboroso-gold transition-colors" />
         </a>
       </motion.div>
+      </section>
+
+      {/* Mobile Version */}
+      <section className="lg:hidden relative min-h-screen flex flex-col justify-between bg-saboroso-charcoal overflow-hidden pt-24 pb-12 w-full">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/background.png"
+            alt="Saboroso Background"
+            fill
+            priority
+            className="object-cover object-center scale-105 select-none"
+          />
+          {/* Rich dark gradient overlays for mobile readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-saboroso-charcoal/90 via-saboroso-charcoal/60 to-saboroso-charcoal" />
+        </div>
+
+        {/* Content Container */}
+        <div className="relative z-10 flex-grow flex flex-col justify-center px-4 w-full">
+          <motion.div
+            className="flex flex-col items-center text-center max-w-md mx-auto"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {/* Outline pill badge */}
+            <motion.div
+              variants={itemVariants}
+              className="inline-flex items-center gap-2 border border-saboroso-gold/40 rounded-full px-4 py-1.5 bg-saboroso-charcoal/50 backdrop-blur-sm mb-5"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-saboroso-gold animate-ping" />
+              <span className="text-[10px] font-semibold tracking-widest text-saboroso-gold uppercase">
+                78 Anos de Tradição
+              </span>
+            </motion.div>
+
+            {/* Headline */}
+            <motion.h1
+              variants={itemVariants}
+              className="text-3xl sm:text-4xl font-serif text-white font-bold leading-tight mb-4"
+            >
+              78 anos levando <br />
+              <span className="text-saboroso-gold italic font-normal">sabor</span> à mesa dos <br />
+              brasileiros
+            </motion.h1>
+
+            {/* Paragraph */}
+            <motion.p
+              variants={itemVariants}
+              className="text-sm text-white/80 max-w-sm mb-6 leading-relaxed font-light"
+            >
+              Vinagres e temperos produzidos com tradição, qualidade e inovação para transformar cada refeição.
+            </motion.p>
+
+            {/* Action Buttons */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col gap-3 w-full"
+            >
+              <a
+                href="#produtos"
+                className="inline-flex items-center justify-center gap-3 bg-[#388E3C] hover:bg-[#2E7D32] text-white px-8 py-3.5 rounded-full font-bold text-sm tracking-wide uppercase transition-all duration-300 shadow-lg shadow-[#388E3C]/20"
+              >
+                Conheça os Produtos
+                <ArrowRight className="w-4 h-4" />
+              </a>
+
+              <a
+                href="#empresa"
+                className="inline-flex items-center justify-center gap-3 border border-white/60 hover:border-saboroso-gold hover:text-saboroso-gold text-white px-8 py-3.5 rounded-full font-bold text-sm tracking-wide uppercase transition-all duration-300 bg-white/5"
+              >
+                Nossa História
+                <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center">
+                  <Play className="w-3 h-3 fill-current ml-0.5" />
+                </div>
+              </a>
+            </motion.div>
+          </motion.div>
+
+          {/* Bottles Display Container (Responsive aspect-ratio based) */}
+          <div className="relative w-full max-w-[340px] aspect-[4/3] mx-auto mt-10 mb-2 flex items-end justify-center select-none">
+            
+            {/* Background Floating Logo Backdrop */}
+            <motion.div
+              className="absolute top-[0%] left-1/2 -translate-x-1/2 w-[70%] aspect-[2.2/1] z-0 pointer-events-none"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 0.85, scale: 1 }}
+              transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
+            >
+              <div className="relative w-full h-full flex justify-center items-center">
+                {/* Glowing backdrop shadow */}
+                <div className="absolute inset-0 bg-saboroso-gold/15 rounded-full filter blur-2xl opacity-75" />
+                <Image
+                  src="/images/logo-hero.png"
+                  alt="Saboroso Logo Background"
+                  fill
+                  className="object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.45)]"
+                  priority
+                />
+              </div>
+            </motion.div>
+
+            {/* Limão Bottle (Green) - Left */}
+            <motion.div
+              className="absolute left-[15%] bottom-[8%] w-[26%] aspect-[1/2.8] z-10"
+              variants={bottleVariants1}
+              initial="hidden"
+              animate="visible"
+            >
+              <div className="relative w-full h-full animate-float flex justify-center items-center">
+                <Image
+                  src="/images/vinagre-limao.png"
+                  alt="Vinagre de Limão"
+                  fill
+                  className="object-contain drop-shadow-[0_15px_30px_rgba(21,90,37,0.45)]"
+                />
+              </div>
+            </motion.div>
+
+            {/* Tradicional Bottle (Red) - Middle & Front */}
+            <motion.div
+              className="absolute left-[50%] bottom-[0%] -translate-x-1/2 w-[31%] aspect-[1/2.8] z-30"
+              variants={bottleVariants2}
+              initial="hidden"
+              animate="visible"
+            >
+              <div className="relative w-full h-full animate-float-delayed flex justify-center items-center">
+                <Image
+                  src="/images/vinagre-trad.png"
+                  alt="Vinagre Tradicional"
+                  fill
+                  className="object-contain drop-shadow-[0_20px_40px_rgba(122,12,17,0.55)] scale-110"
+                />
+              </div>
+            </motion.div>
+
+            {/* Maçã Bottle (Orange) - Right */}
+            <motion.div
+              className="absolute right-[15%] bottom-[8%] w-[26%] aspect-[1/2.8] z-20"
+              variants={bottleVariants3}
+              initial="hidden"
+              animate="visible"
+            >
+              <div className="relative w-full h-full animate-float-delayed-more flex justify-center items-center">
+                <Image
+                  src="/images/vinagre-maçã.png"
+                  alt="Vinagre de Maçã"
+                  fill
+                  className="object-contain drop-shadow-[0_15px_30px_rgba(197,168,128,0.45)]"
+                />
+              </div>
+            </motion.div>
+
+          </div>
+        </div>
+
+        {/* Down Scroll Indicator (Mobile style) */}
+        <div className="relative z-10 flex flex-col items-center mt-2">
+          <motion.div
+            animate={{
+              y: [0, 8, 0],
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <ChevronDown className="w-5 h-5 text-white/40" />
+          </motion.div>
+        </div>
       </section>
     </div>
   );
