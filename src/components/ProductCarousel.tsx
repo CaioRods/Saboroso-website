@@ -5,9 +5,11 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight, Plus, Eye } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useWaveTransition } from "@/components/WaveTransition";
 
 export default function ProductCarousel() {
   const router = useRouter();
+  const { transitionTo } = useWaveTransition();
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
 
@@ -123,7 +125,7 @@ export default function ProductCarousel() {
                   layout
                   onMouseEnter={() => setHoveredProduct(product.id)}
                   onMouseLeave={() => setHoveredProduct(null)}
-                  onClick={() => router.push("/produtos/" + product.id)}
+                  onClick={() => transitionTo("/produtos/" + product.id)}
                   className={`relative rounded-3xl overflow-hidden bg-transparent border ${product.borderColor} ${product.hoverBorderColor} p-6 flex flex-col items-center justify-between min-h-[480px] group transition-all duration-500 cursor-pointer`}
                   style={{
                     boxShadow: hoveredProduct === product.id
@@ -202,7 +204,7 @@ export default function ProductCarousel() {
                     <button 
                       onClick={(e) => {
                         e.stopPropagation();
-                        router.push("/produtos/" + product.id);
+                        transitionTo("/produtos/" + product.id);
                       }}
                       className={`w-full inline-flex items-center justify-center gap-2 border py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-sm cursor-pointer ${product.btnStyle}`}
                     >
@@ -223,7 +225,7 @@ export default function ProductCarousel() {
                   animate={{ opacity: 1, x: 0, scale: 1 }}
                   exit={{ opacity: 0, x: -50, scale: 0.95 }}
                   transition={{ duration: 0.4 }}
-                  onClick={() => router.push("/produtos/" + products[activeIndex].id)}
+                  onClick={() => transitionTo("/produtos/" + products[activeIndex].id)}
                   className={`relative w-full max-w-[320px] rounded-3xl border p-6 flex flex-col items-center justify-between min-h-[440px] shadow-2xl cursor-pointer ${products[activeIndex].borderColor}`}
                   style={{
                     boxShadow: `0 20px 40px -10px ${products[activeIndex].glowColor}`,
@@ -280,7 +282,7 @@ export default function ProductCarousel() {
                     <button 
                       onClick={(e) => {
                         e.stopPropagation();
-                        router.push("/produtos/" + products[activeIndex].id);
+                        transitionTo("/produtos/" + products[activeIndex].id);
                       }}
                       className={`w-full inline-flex items-center justify-center gap-2 border py-2.5 rounded-full font-bold text-xs uppercase tracking-wider shadow-md cursor-pointer ${products[activeIndex].mobileBtnStyle}`}
                     >

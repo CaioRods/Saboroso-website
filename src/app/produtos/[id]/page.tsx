@@ -3,12 +3,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
 import { ArrowLeft, Check, Heart, ShoppingBag, Info, Award, HelpCircle, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactModal from "@/components/ContactModal";
+import { useWaveTransition } from "@/components/WaveTransition";
 
 interface ProductDetail {
   id: string;
@@ -159,6 +159,7 @@ const productData: Record<string, ProductDetail> = {
 export default function ProductPage() {
   const params = useParams();
   const router = useRouter();
+  const { transitionTo } = useWaveTransition();
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [product, setProduct] = useState<ProductDetail | null>(null);
 
@@ -208,13 +209,13 @@ export default function ProductPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Back Button */}
-          <Link
-            href="/#produtos"
-            className="inline-flex items-center gap-2 border border-white/10 hover:border-saboroso-gold/50 bg-white/5 rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 mb-10 hover:-translate-x-1"
+          <button
+            onClick={() => transitionTo("/#produtos")}
+            className="inline-flex items-center gap-2 border border-white/10 hover:border-saboroso-gold/50 bg-white/5 rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 mb-10 hover:-translate-x-1 cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             Voltar aos Produtos
-          </Link>
+          </button>
 
           {/* Dynamic Grid Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-20">
@@ -398,7 +399,7 @@ export default function ProductPage() {
               {recommendedProducts.map((p) => (
                 <div
                   key={p.id}
-                  onClick={() => router.push("/produtos/" + p.id)}
+                  onClick={() => transitionTo("/produtos/" + p.id)}
                   className={`relative rounded-3xl overflow-hidden bg-gradient-to-b ${p.bgColor} border border-white/10 p-6 flex flex-col sm:flex-row items-center justify-between min-h-[220px] group transition-all duration-500 cursor-pointer hover:border-saboroso-gold/30`}
                   style={{
                     boxShadow: `0 10px 30px -15px ${p.glowColor}`,

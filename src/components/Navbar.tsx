@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { MessageCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useWaveTransition } from "@/components/WaveTransition";
 
 interface NavbarProps {
   onOpenContact: () => void;
@@ -12,6 +13,7 @@ interface NavbarProps {
 export default function Navbar({ onOpenContact }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const { transitionTo } = useWaveTransition();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,7 +51,14 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 xl:h-20">
           {/* Logo */}
-          <a href="/#home" className="flex-shrink-0 relative w-44 h-14 xl:w-52 xl:h-16 2xl:w-64 2xl:h-20 transition-all">
+          <a
+            href="/#home"
+            onClick={(e) => {
+              e.preventDefault();
+              transitionTo("/#home");
+            }}
+            className="flex-shrink-0 relative w-44 h-14 xl:w-52 xl:h-16 2xl:w-64 2xl:h-20 transition-all cursor-pointer"
+          >
             <Image
               src="/images/logo.webp"
               alt="Saboroso Logo"
@@ -66,7 +75,11 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
                 <div key={link.name} className="relative group">
                   <a
                     href={link.href}
-                    className="text-white hover:text-saboroso-gold text-[10px] xl:text-[11px] 2xl:text-sm font-semibold tracking-wider uppercase transition-colors duration-200 py-2 flex items-center gap-0.5 whitespace-nowrap"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      transitionTo(link.href);
+                    }}
+                    className="text-white hover:text-saboroso-gold text-[10px] xl:text-[11px] 2xl:text-sm font-semibold tracking-wider uppercase transition-colors duration-200 py-2 flex items-center gap-0.5 whitespace-nowrap cursor-pointer"
                   >
                     {link.name}
                     {link.hasDropdown && (
@@ -90,19 +103,31 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
                       <div className="py-1">
                         <a
                           href="/produtos/tradicional"
-                          className="block px-4 py-2 text-sm text-white/80 hover:bg-saboroso-red hover:text-white"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            transitionTo("/produtos/tradicional");
+                          }}
+                          className="block px-4 py-2 text-sm text-white/80 hover:bg-saboroso-red hover:text-white cursor-pointer"
                         >
                           Tradicional
                         </a>
                         <a
                           href="/produtos/maca"
-                          className="block px-4 py-2 text-sm text-white/80 hover:bg-saboroso-red hover:text-white"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            transitionTo("/produtos/maca");
+                          }}
+                          className="block px-4 py-2 text-sm text-white/80 hover:bg-saboroso-red hover:text-white cursor-pointer"
                         >
                           Maçã
                         </a>
                         <a
                           href="/produtos/limao"
-                          className="block px-4 py-2 text-sm text-white/80 hover:bg-saboroso-red hover:text-white"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            transitionTo("/produtos/limao");
+                          }}
+                          className="block px-4 py-2 text-sm text-white/80 hover:bg-saboroso-red hover:text-white cursor-pointer"
                         >
                           Limão
                         </a>
@@ -179,8 +204,12 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="block px-3 py-2.5 rounded-md text-base font-medium text-white hover:bg-saboroso-red/20 hover:text-saboroso-gold transition-all"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsOpen(false);
+                    transitionTo(link.href);
+                  }}
+                  className="block px-3 py-2.5 rounded-md text-base font-medium text-white hover:bg-saboroso-red/20 hover:text-saboroso-gold transition-all cursor-pointer"
                 >
                   {link.name}
                 </a>
