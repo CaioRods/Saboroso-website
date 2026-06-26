@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Check, Heart, ShoppingBag, Info, Award, HelpCircle } from "lucide-react";
+import { ArrowLeft, Check, Heart, ShoppingBag, Info, Award, HelpCircle, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -37,18 +37,18 @@ const productData: Record<string, ProductDetail> = {
   tradicional: {
     id: "tradicional",
     name: "Vinagre Tradicional",
-    category: "Vinagre de Álcool 4% de Acidez",
-    description: "O clássico indispensável na culinária diária, oferecendo acidez limpa e neutra que realça o sabor natural de carnes, saladas, conservas e vinagretes.",
+    category: "Vinagre de Álcool Saboroso",
+    description: "Vinagre de Álcool Saboroso: 1001 Utilidades para sua Casa! O Vinagre de Álcool Saboroso é aquele item que nunca pode faltar na sua despensa. Seja para garantir o tempero perfeito daquela salada fresquinha ou para deixar a casa brilhando sem usar produtos químicos pesados, ele é a solução econômica e eficiente que você precisa.",
     image: "/images/vinagre-trad.webp",
     colorTheme: "red",
     bgColor: "from-saboroso-red/10 to-saboroso-charcoal",
     glowColor: "rgba(122, 12, 17, 0.4)",
     mercadoLivreUrl: "https://www.google.com/aclk?sa=L&ai=DChsSEwiWpsjw9aSVAxUBUEgAHTnOLHoYACICCAEQBBoCY2U&co=1&gclid=Cj0KCQjwxvjRBhC2ARIsAI7KJa1RUwasy6BSTXFYgAPtADgIuFiCBUPp-7TIi0vgagfHCZFKt5jN3G4aAuXQEALw_wcB&cid=CAAS9QHkaFM074fPBCqU4ztSDM9M4FJqQipkHViyIbIBaWwu7h_BDed3r8cvs9KnBRcqrJjqAzVayxNQrXP-G6Z-GYkovFwVcPDD0LGbL0oDh0-lM9S_X98d2o5P4Eme8U0sHAl5PDDbvNlhjD_5pMgKY5g2i-iVCn_w2p3BgfsSaalE1u0sPtTCIjOCMW9RNlTBHVNDR5tb0725pzmqs892Rs9q_9FRzx8vGahAPSqF3Dc9UIgC2FokP0V_QsmoNj1XaEvF0uQqG9N06NQ7pXdiJx89BXpx0PDKMEi9pHJlWTylohvkQeLJzIpr0DCv6gGyijTKqCdzhg&cce=1&sig=AOD64_13KNfZQIJY2xg4PhWl9a_cGQsu8Q&ctype=5&q=&ved=2ahUKEwiio8Lw9aSVAxWrIrkGHSnWJaoQ5bgDKAB6BAgJEAs&adurl=",
-    acidity: "4,0%",
-    ingredients: "Fermentado acético de álcool e água purificada.",
-    volume: "500ml",
+    acidity: "4%",
+    ingredients: "Fermentado acético de álcool e água.",
+    volume: "750ml",
     packaging: "PET 100% Reciclável",
-    shelfLife: "24 Meses",
+    shelfLife: "Produto estável (Longa duração)",
     nutritionalTable: {
       portion: "Porção de 15ml (1 colher de sopa)",
       items: [
@@ -63,32 +63,32 @@ const productData: Record<string, ProductDetail> = {
       ],
     },
     benefits: [
-      "Acidez perfeitamente equilibrada e neutra",
-      "Sem adição de corantes ou conservantes artificiais",
-      "Ideal para esterilização natural de vegetais e hortaliças",
-      "Baixo teor calórico e totalmente livre de sódio",
+      "Tempero Leve: Acidez na medida certa para molhos e conservas.",
+      "Limpeza de Vegetais: O melhor aliado para eliminar impurezas de frutas e hortaliças.",
+      "Elimina Odores: Ótimo para tirar o cheiro de peixe ou alho das mãos e tábuas.",
+      "Vegano e Natural: Sem conservantes artificiais ou corantes.",
     ],
     tips: [
-      { title: "Conservas Caseiras", desc: "Perfeito para picles de cebola roxa, pepino e cenoura devido ao seu perfil neutro e acidez estável." },
-      { title: "Amaciamento de Carnes", desc: "Use para marinar carnes vermelhas e aves por 30 minutos antes do preparo para obter cortes mais macios." },
-      { title: "Higiene Natural", desc: "Misture uma colher de sopa em um litro de água para higienizar verduras de forma segura e livre de produtos químicos." },
+      { title: "Vidros Impecáveis", desc: "Remove manchas e deixa um brilho profissional na limpeza de vidros e espelhos." },
+      { title: "Roupas Macias", desc: "Age como amaciante natural, removendo resíduos de sabão das fibras dos tecidos." },
+      { title: "Contra o Mofo", desc: "Excelente para limpar armários e áreas úmidas, prevenindo a proliferação de fungos." },
     ],
   },
   limao: {
     id: "limao",
     name: "Vinagre de Limão",
-    category: "Vinagre Especial com Suco de Limão",
-    description: "Uma fusão aromática e cítrica que combina o poder acético clássico com o frescor refrescante do suco de limão. Ideal para marinadas leves, aves e frutos do mar.",
+    category: "Vinagre de Álcool com Limão",
+    description: "Vinagre de Álcool Saboroso com Limão – O Toque Mágico da sua Casa! Chega daquele cheiro forte de vinagre comum! O Vinagre Saboroso com Limão une o poder de desinfecção do álcool com a fragrância refrescante e o poder desengordurante do limão. É o segredo mais bem guardado das donas de casa e chefs modernos.",
     image: "/images/vinagre-limao.webp",
     colorTheme: "green",
     bgColor: "from-green-950/20 to-saboroso-charcoal",
     glowColor: "rgba(21, 90, 37, 0.4)",
     mercadoLivreUrl: "https://www.google.com/aclk?sa=L&ai=DChsSEwiWpsjw9aSVAxUBUEgAHTnOLHoYACICCAEQBRoCY2U&co=1&gclid=Cj0KCQjwxvjRBhC2ARIsAI7KJa0VA-jeSTws0SS6w2ptm-45cA1x0HQXWFlKTQy9uH0n530b-cow87IaAqVWEALw_wcB&cid=CAAS9QHkaFM074fPBCqU4ztSDM9M4FJqQipkHViyIbIBaWwu7h_BDed3r8cvs9KnBRcqrJjqAzVayxNQrXP-G6Z-GYkovFwVcPDD0LGbL0oDh0-lM9S_X98d2o5P4Eme8U0sHAl5PDDbvNlhjD_5pMgKY5g2i-iVCn_w2p3BgfsSaalE1u0sPtTCIjOCMW9RNlTBHVNDR5tb0725pzmqs892Rs9q_9FRzx8vGahAPSqF3Dc9UIgC2FokP0V_QsmoNj1XaEvF0uQqG9N06NQ7pXdiJx89BXpx0PDKMEi9pHJlWTylohvkQeLJzIpr0DCv6gGyijTKqCdzhg&cce=1&sig=AOD64_0JlHEJRIlvzXxlKN9XFga1HXn9hQ&ctype=5&q=&ved=2ahUKEwiio8Lw9aSVAxWrIrkGHSnWJaoQ5bgDKAB6BAgJEA4&adurl=",
-    acidity: "4,0%",
-    ingredients: "Fermentado acético de álcool, água purificada, suco desidratado de limão e aroma natural.",
-    volume: "500ml",
+    acidity: "4%",
+    ingredients: "Fermentado acético de álcool, água, suco desidratado de limão e aroma natural de limão.",
+    volume: "750ml",
     packaging: "PET 100% Reciclável",
-    shelfLife: "24 Meses",
+    shelfLife: "Produto estável (Longa duração)",
     nutritionalTable: {
       portion: "Porção de 15ml (1 colher de sopa)",
       items: [
@@ -103,32 +103,32 @@ const productData: Record<string, ProductDetail> = {
       ],
     },
     benefits: [
-      "Toque cítrico refrescante e muito aromático",
-      "Harmonização perfeita para aves, peixes e frutos do mar",
-      "Ajuda a suavizar odores fortes de carnes brancas",
-      "Livre de sódio, glúten e conservantes químicos",
+      "Super Desengordurante: O limão potencializa a remoção de gordura.",
+      "Culinária Leve: Perfeito para marinar peixes e aves, eliminando cheiros fortes.",
+      "Adeus Odores: Neutraliza cheiros de fritura, peixe e ovo de louças e superfícies.",
+      "Aroma Natural: Deixa vidros, espelhos e inox brilhando e perfumados.",
     ],
     tips: [
-      { title: "Grelhados e Frutos do Mar", desc: "Pincele sobre filés de peixe ou camarões grelhados no final do cozimento para um brilho ácido espetacular." },
-      { title: "Molhos para Saladas", desc: "Misture com azeite extravirgem, uma pitada de mel e ervas frescas para um molho leve e cítrico." },
-      { title: "Finalização de Pratos", desc: "Use algumas gotas para finalizar caldos de legumes e sopas frias, adicionando complexidade e frescor." },
+      { title: "Micro-ondas Novo", desc: "Coloque uma tigela com água e o Vinagre com Limão, ligue por 3 minutos e veja a sujeira derreter." },
+      { title: "Salada Premium", desc: "Use como base para molhos de salada; o toque cítrico e perfumado de limão já vem pronto!" },
+      { title: "Tábuas de Corte", desc: "Higienize suas tábuas de madeira ou plástico eliminando bactérias e odores." },
     ],
   },
   maca: {
     id: "maca",
     name: "Vinagre de Maçã",
-    category: "Vinagre de Maçã 100% Natural",
-    description: "Elaborado a partir de maçãs frescas selecionadas e prensadas. Seu aroma frutado e sabor suave carregam as ricas propriedades nutricionais e antioxidantes naturais da fruta.",
+    category: "Vinagre de Maçã Saboroso",
+    description: "Vinagre de Maçã Saboroso: Saúde e Equilíbrio em cada gota! O Vinagre de Maçã Saboroso é muito mais que um tempero: é um aliado para o seu corpo e para a sua beleza. Produzido com maçãs selecionadas, ele possui uma acidez suave e um aroma frutado que transforma pratos simples em refeições sofisticadas e saudáveis.",
     image: "/images/vinagre-maçã.webp",
     colorTheme: "gold",
     bgColor: "from-saboroso-gold/15 to-saboroso-charcoal",
     glowColor: "rgba(197, 168, 128, 0.4)",
     mercadoLivreUrl: "https://www.google.com/aclk?sa=L&ai=DChsSEwiWpsjw9aSVAxUBUEgAHTnOLHoYACICCAEQBxoCY2U&co=1&gclid=Cj0KCQjwxvjRBhC2ARIsAI7KJa2Q15PaoqivL8gXRdW_wqZxjq3DMWwE53pPnTB0Ij81ohHEb-MV5UgaAqu3EALw_wcB&cid=CAAS9QHkaFM074fPBCqU4ztSDM9M4FJqQipkHViyIbIBaWwu7h_BDed3r8cvs9KnBRcqrJjqAzVayxNQrXP-G6Z-GYkovFwVcPDD0LGbL0oDh0-lM9S_X98d2o5P4Eme8U0sHAl5PDDbvNlhjD_5pMgKY5g2i-iVCn_w2p3BgfsSaalE1u0sPtTCIjOCMW9RNlTBHVNDR5tb0725pzmqs892Rs9q_9FRzx8vGahAPSqF3Dc9UIgC2FokP0V_QsmoNj1XaEvF0uQqG9N06NQ7pXdiJx89BXpx0PDKMEi9pHJlWTylohvkQeLJzIpr0DCv6gGyijTKqCdzhg&cce=1&sig=AOD64_00Z3uuJ83cGaptaGEcQsOSHGi_Tw&ctype=5&q=&ved=2ahUKEwiio8Lw9aSVAxWrIrkGHSnWJaoQ5bgDKAB6BAgJEBE&adurl=",
-    acidity: "4,0%",
+    acidity: "4%",
     ingredients: "Fermentado acético de maçã e água purificada.",
-    volume: "500ml",
+    volume: "750ml",
     packaging: "PET 100% Reciclável / Vidro",
-    shelfLife: "24 Meses",
+    shelfLife: "Produto estável (Longa duração)",
     nutritionalTable: {
       portion: "Porção de 15ml (1 colher de sopa)",
       items: [
@@ -143,15 +143,15 @@ const productData: Record<string, ProductDetail> = {
       ],
     },
     benefits: [
-      "Produzido a partir de maçãs frescas selecionadas",
-      "Sabor suave, frutado e altamente gastronômico",
-      "Contém propriedades antioxidantes benéficas ao organismo",
-      "Muito procurado para dietas de desintoxicação e controle glicêmico",
+      "Culinária Leve: Perfeito para marinar aves e vegetais ou criar molhos agridoces.",
+      "Amigo da Digestão: Muito utilizado em shots matinais para equilibrar o organismo.",
+      "Baixo Sódio e 0% Gorduras: Tempero inteligente que cuida do coração e da balança.",
+      "Beleza Natural: Excelente para selar cutículas capilares e controlar o frizz.",
     ],
     tips: [
-      { title: "Shot Matinal Saudável", desc: "Dilua 1 colher de sopa de vinagre de maçã em um copo de água morna com mel para começar o dia com mais disposição." },
-      { title: "Vinaigrettes Delicados", desc: "Combina perfeitamente com saladas de folhas verdes amargas, nozes, queijo gorgonzola e azeite de oliva." },
-      { title: "Brilho nos Cabelos", desc: "Adicione duas colheres de sopa em um copo de água morna e use como último enxágue pós-shampoo para selar as cutículas capilares." },
+      { title: "Shot Detox", desc: "Misture 1 colher de sopa de Vinagre de Maçã Saboroso + 200ml de água + limão espremido pela manhã." },
+      { title: "Salada Premium", desc: "Combine com azeite extravirgem e ervas finas para um molho funcional e saboroso." },
+      { title: "Tônico Capilar", desc: "Misture uma parte de vinagre para três de água e aplique nos cabelos pós-banho para fios sedosos e brilhantes." },
     ],
   },
 };
@@ -169,7 +169,6 @@ export default function ProductPage() {
       setProduct(productData[id]);
       window.scrollTo(0, 0);
     } else if (id) {
-      // Redirect to home if product is not found
       router.push("/");
     }
   }, [id, router]);
@@ -182,17 +181,14 @@ export default function ProductPage() {
     );
   }
 
-  const themeColors = {
-    red: "text-saboroso-red border-saboroso-red/30 bg-saboroso-red/5 hover:bg-saboroso-red hover:text-white",
-    green: "text-[#2E7D32] border-[#2E7D32]/30 bg-green-950/5 hover:bg-[#2E7D32] hover:text-white",
-    gold: "text-saboroso-gold border-saboroso-gold/30 bg-saboroso-gold/5 hover:bg-saboroso-gold hover:text-white",
-  };
-
   const mlBtnColors = {
     red: "bg-saboroso-red hover:bg-saboroso-red-dark shadow-saboroso-red/25",
     green: "bg-[#2E7D32] hover:bg-[#1B5E20] shadow-green-900/25",
     gold: "bg-[#8F744D] hover:bg-[#6D5432] shadow-saboroso-gold/25",
   };
+
+  // Get the remaining recommended products
+  const recommendedProducts = Object.values(productData).filter(p => p.id !== product.id);
 
   return (
     <>
@@ -391,6 +387,52 @@ export default function ProductPage() {
               </div>
             </div>
 
+          </div>
+
+          {/* Recommended Products Section */}
+          <div className="mb-20">
+            <h2 className="text-xl sm:text-2xl font-serif font-bold text-white mb-8 text-left border-b border-white/5 pb-4">
+              Outros Produtos Recomendados
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {recommendedProducts.map((p) => (
+                <div
+                  key={p.id}
+                  onClick={() => router.push("/produtos/" + p.id)}
+                  className={`relative rounded-3xl overflow-hidden bg-gradient-to-b ${p.bgColor} border border-white/10 p-6 flex flex-col sm:flex-row items-center justify-between min-h-[220px] group transition-all duration-500 cursor-pointer hover:border-saboroso-gold/30`}
+                  style={{
+                    boxShadow: `0 10px 30px -15px ${p.glowColor}`,
+                  }}
+                >
+                  {/* Image showcase */}
+                  <div className="relative w-[30%] sm:w-[25%] aspect-[1/2.8] z-10 transform group-hover:scale-105 transition-transform duration-500 flex justify-center items-center h-44">
+                    <Image
+                      src={p.image}
+                      alt={p.name}
+                      fill
+                      className="object-contain drop-shadow-[0_8px_15px_rgba(0,0,0,0.4)]"
+                    />
+                  </div>
+
+                  {/* Info details */}
+                  <div className="w-full sm:w-[70%] text-center sm:text-left mt-4 sm:mt-0 sm:pl-6 z-10 flex flex-col justify-center">
+                    <span className="text-[9px] uppercase tracking-widest text-saboroso-gold font-bold">
+                      {p.category}
+                    </span>
+                    <h3 className="text-lg sm:text-xl font-serif font-bold text-white mt-1">
+                      {p.name}
+                    </h3>
+                    <p className="text-white/60 text-xs font-light mt-2 line-clamp-2">
+                      {p.description}
+                    </p>
+                    <div className="mt-4 flex items-center gap-1.5 text-xs text-saboroso-gold font-bold uppercase tracking-wider group-hover:underline">
+                      Conhecer Produto
+                      <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
         </div>
