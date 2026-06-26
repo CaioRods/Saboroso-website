@@ -221,7 +221,7 @@ export default function ProductPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-20">
             
             {/* Left Image Showcase */}
-            <div className="lg:col-span-5 flex items-start justify-center relative min-h-[320px] xs:min-h-[400px] lg:min-h-[440px] w-full">
+            <div className="lg:col-span-5 flex items-start justify-center relative min-h-[290px] xs:min-h-[370px] lg:min-h-[410px] w-full mt-[30px]">
               {/* Product specific glow halo */}
               <div
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] aspect-square rounded-full filter blur-[90px] opacity-80 z-0 pointer-events-none"
