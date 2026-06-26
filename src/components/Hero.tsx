@@ -108,7 +108,7 @@ export default function Hero() {
           alt="Saboroso Background"
           fill
           priority
-          className="object-cover object-center scale-105 select-none brightness-[0.3] contrast-[1.15] saturate-[0.7] sepia-[0.08]"
+          className="object-cover object-center scale-105 select-none brightness-[0.42] contrast-[1.12] saturate-[0.78] sepia-[0.08]"
         />
         {/* Rich dark gradient overlays for readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-saboroso-charcoal via-saboroso-charcoal/85 to-saboroso-charcoal/10 md:block hidden z-10" />
@@ -228,7 +228,7 @@ export default function Hero() {
                   src="/images/vinagre-limao.webp"
                   alt="Vinagre de Limão"
                   fill
-                  className="object-contain drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)] drop-shadow-[0_30px_60px_rgba(21,90,37,0.18)] brightness-[0.78] contrast-[1.12] saturate-[0.82] sepia-[0.12] scale-[1.3] lg:scale-[2.2] transition-all duration-300"
+                  className="object-contain drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)] drop-shadow-[0_30px_60px_rgba(21,90,37,0.18)] brightness-[0.83] contrast-[1.10] saturate-[0.86] sepia-[0.10] scale-[1.3] lg:scale-[2.2] transition-all duration-300"
                 />
               </div>
             </motion.div>
@@ -249,7 +249,7 @@ export default function Hero() {
                   src="/images/vinagre-trad.webp"
                   alt="Vinagre Tradicional"
                   fill
-                  className="object-contain drop-shadow-[0_15px_20px_rgba(0,0,0,0.55)] drop-shadow-[0_35px_70px_rgba(122,12,17,0.20)] brightness-[0.78] contrast-[1.12] saturate-[0.82] sepia-[0.12] scale-[1.3] lg:scale-[2.2] transition-all duration-300"
+                  className="object-contain drop-shadow-[0_15px_20px_rgba(0,0,0,0.55)] drop-shadow-[0_35px_70px_rgba(122,12,17,0.20)] brightness-[0.83] contrast-[1.10] saturate-[0.86] sepia-[0.10] scale-[1.3] lg:scale-[2.2] transition-all duration-300"
                 />
               </div>
             </motion.div>
@@ -270,7 +270,7 @@ export default function Hero() {
                   src="/images/vinagre-maçã.webp"
                   alt="Vinagre de Maçã"
                   fill
-                  className="object-contain drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)] drop-shadow-[0_30px_60px_rgba(197,168,128,0.18)] brightness-[0.78] contrast-[1.12] saturate-[0.82] sepia-[0.12] scale-[1.3] lg:scale-[2.2] transition-all duration-300"
+                  className="object-contain drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)] drop-shadow-[0_30px_60px_rgba(197,168,128,0.18)] brightness-[0.83] contrast-[1.10] saturate-[0.86] sepia-[0.10] scale-[1.3] lg:scale-[2.2] transition-all duration-300"
                 />
               </div>
             </motion.div>
@@ -318,7 +318,7 @@ export default function Hero() {
             alt="Saboroso Background"
             fill
             priority
-            className="object-cover object-center scale-105 select-none brightness-[0.3] contrast-[1.15] saturate-[0.7] sepia-[0.08]"
+            className="object-cover object-center scale-105 select-none brightness-[0.42] contrast-[1.12] saturate-[0.78] sepia-[0.08]"
           />
           {/* Rich dark gradient overlays for mobile readability */}
           <div className="absolute inset-0 bg-gradient-to-b from-saboroso-charcoal/95 via-transparent to-saboroso-charcoal z-10" />
@@ -414,7 +414,7 @@ export default function Hero() {
                   src="/images/vinagre-limao.webp"
                   alt="Vinagre de Limão"
                   fill
-                  className="object-contain drop-shadow-[0_8px_10px_rgba(0,0,0,0.45)] drop-shadow-[0_20px_40px_rgba(21,90,37,0.18)] brightness-[0.78] contrast-[1.12] saturate-[0.82] sepia-[0.12]"
+                  className="object-contain drop-shadow-[0_8px_10px_rgba(0,0,0,0.45)] drop-shadow-[0_20px_40px_rgba(21,90,37,0.18)] brightness-[0.83] contrast-[1.10] saturate-[0.86] sepia-[0.10]"
                 />
               </div>
             </motion.div>
@@ -431,7 +431,7 @@ export default function Hero() {
                   src="/images/vinagre-trad.webp"
                   alt="Vinagre Tradicional"
                   fill
-                  className="object-contain drop-shadow-[0_10px_12px_rgba(0,0,0,0.5)] drop-shadow-[0_25px_50px_rgba(122,12,17,0.20)] brightness-[0.78] contrast-[1.12] saturate-[0.82] sepia-[0.12] scale-110"
+                  className="object-contain drop-shadow-[0_10px_12px_rgba(0,0,0,0.5)] drop-shadow-[0_25px_50px_rgba(122,12,17,0.20)] brightness-[0.83] contrast-[1.10] saturate-[0.86] sepia-[0.10] scale-110"
                 />
               </div>
             </motion.div>
@@ -448,7 +448,7 @@ export default function Hero() {
                   src="/images/vinagre-maçã.webp"
                   alt="Vinagre de Maçã"
                   fill
-                  className="object-contain drop-shadow-[0_8px_10px_rgba(0,0,0,0.45)] drop-shadow-[0_20px_40px_rgba(197,168,128,0.18)] brightness-[0.78] contrast-[1.12] saturate-[0.82] sepia-[0.12]"
+                  className="object-contain drop-shadow-[0_8px_10px_rgba(0,0,0,0.45)] drop-shadow-[0_20px_40px_rgba(197,168,128,0.18)] brightness-[0.83] contrast-[1.10] saturate-[0.86] sepia-[0.10]"
                 />
               </div>
             </motion.div>
