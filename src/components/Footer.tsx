@@ -177,6 +177,20 @@ export default function Footer() {
               <a href="#home" className="hover:text-white transition-colors">Política de Privacidade</a>
               <span>•</span>
               <a href="#home" className="hover:text-white transition-colors">Termos de Uso</a>
+              <span>•</span>
+              <span className="text-white/30">
+                Created by{" "}
+                <span className="text-white/40">Caio Rodrigues</span>
+                {" • "}
+                <a
+                  href="https://instagram.com/caio.riguess"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-saboroso-gold text-white/40 transition-colors"
+                >
+                  @caio.riguess
+                </a>
+              </span>
             </div>
           </div>
 
