@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { Clock, ArrowRight, Play, Search, ChefHat, Heart } from "lucide-react";
+import { Clock, ArrowRight, ArrowLeft, Play, Search, ChefHat, Heart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -90,8 +90,17 @@ export default function RecipesPage() {
           <div className="absolute bottom-[20%] left-[-10%] w-[350px] h-[350px] bg-saboroso-red/5 rounded-full filter blur-[100px]" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
           
+          {/* Back Button */}
+          <button
+            onClick={() => transitionTo("/#receitas")}
+            className="inline-flex items-center gap-2 border border-stone-200 hover:border-saboroso-gold/40 bg-white rounded-full px-5 py-2.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all mb-8 hover:-translate-x-1 cursor-pointer shadow-sm"
+          >
+            <ArrowLeft className="w-3.5 h-3.5" />
+            Voltar ao Início
+          </button>
+
           {/* Controls: Category Filter & Search */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-stone-200 pb-8 mb-12">
             
