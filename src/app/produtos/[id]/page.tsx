@@ -195,7 +195,7 @@ export default function ProductPage() {
     <>
       <Navbar onOpenContact={() => setIsContactOpen(true)} />
       
-      <main className="min-h-screen bg-saboroso-charcoal text-white pt-28 sm:pt-32 lg:pt-40 xl:pt-48 2xl:pt-56 pb-16 relative overflow-hidden select-none">
+      <main className="min-h-screen bg-saboroso-charcoal text-white pt-28 pb-16 relative overflow-hidden select-none">
         
         {/* Decorative Radial Background Lights */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none">
@@ -221,7 +221,7 @@ export default function ProductPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-20">
             
             {/* Left Image Showcase */}
-            <div className="lg:col-span-5 flex items-start justify-center relative min-h-[290px] xs:min-h-[370px] lg:min-h-[410px] w-full mt-[30px]">
+            <div className="lg:col-span-5 flex items-start justify-center relative w-full mt-[30px]">
               {/* Product specific glow halo */}
               <div
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] aspect-square rounded-full filter blur-[90px] opacity-80 z-0 pointer-events-none"
@@ -229,7 +229,7 @@ export default function ProductPage() {
               />
 
               <motion.div
-                className="relative w-[50%] xs:w-[45%] lg:w-[75%] aspect-[1/2.2] z-10 select-none cursor-pointer"
+                className="relative w-[50%] xs:w-[45%] lg:w-[75%] aspect-[2/3] z-10 select-none cursor-pointer"
                 animate={{
                   y: [0, -15, 0],
                 }}
