@@ -211,7 +211,7 @@ export default function ProductPage() {
           {/* Back Button */}
           <button
             onClick={() => transitionTo("/#produtos")}
-            className="inline-flex items-center gap-2 border border-white/10 hover:border-saboroso-gold/50 bg-white/5 rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 mb-6 hover:-translate-x-1 cursor-pointer"
+            className="inline-flex items-center gap-2 border border-white/10 hover:border-saboroso-gold/50 bg-white/5 rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 mb-8 hover:-translate-x-1 cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             Voltar aos Produtos
@@ -221,7 +221,7 @@ export default function ProductPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-20">
             
             {/* Left Image Showcase */}
-            <div className="lg:col-span-5 flex items-start justify-center relative min-h-[320px] xs:min-h-[400px] lg:min-h-[500px] w-full">
+            <div className="lg:col-span-5 flex items-start justify-center relative min-h-[320px] xs:min-h-[400px] lg:min-h-[440px] w-full">
               {/* Product specific glow halo */}
               <div
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] aspect-square rounded-full filter blur-[90px] opacity-80 z-0 pointer-events-none"
