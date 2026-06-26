@@ -5,7 +5,11 @@ import Image from "next/image";
 import { MessageCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function Navbar() {
+interface NavbarProps {
+  onOpenContact: () => void;
+}
+
+export default function Navbar({ onOpenContact }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -22,13 +26,13 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "Empresa", href: "#empresa" },
-    { name: "Produtos", href: "#produtos", hasDropdown: true },
-    { name: "Receitas", href: "#receitas" },
-    { name: "Distribuidores", href: "#distribuidores" },
-    { name: "Localização", href: "#localizacao" },
-    { name: "Contato", href: "#contato" },
+    { name: "Home", href: "/#home" },
+    { name: "Empresa", href: "/#empresa" },
+    { name: "Produtos", href: "/#produtos", hasDropdown: true },
+    { name: "Receitas", href: "/#receitas" },
+    { name: "Distribuidores", href: "/#distribuidores" },
+    { name: "Localização", href: "/#localizacao" },
+    { name: "Contato", href: "/#contato" },
   ];
 
   return (
@@ -45,7 +49,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 xl:h-20">
           {/* Logo */}
-          <a href="#home" className="flex-shrink-0 relative w-44 h-14 xl:w-52 xl:h-16 2xl:w-64 2xl:h-20 transition-all">
+          <a href="/#home" className="flex-shrink-0 relative w-44 h-14 xl:w-52 xl:h-16 2xl:w-64 2xl:h-20 transition-all">
             <Image
               src="/images/logo.webp"
               alt="Saboroso Logo"
@@ -85,19 +89,19 @@ export default function Navbar() {
                     <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-saboroso-charcoal border border-saboroso-gold/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
                       <div className="py-1">
                         <a
-                          href="#produtos"
+                          href="/produtos/tradicional"
                           className="block px-4 py-2 text-sm text-white/80 hover:bg-saboroso-red hover:text-white"
                         >
                           Tradicional
                         </a>
                         <a
-                          href="#produtos"
+                          href="/produtos/maca"
                           className="block px-4 py-2 text-sm text-white/80 hover:bg-saboroso-red hover:text-white"
                         >
                           Maçã
                         </a>
                         <a
-                          href="#produtos"
+                          href="/produtos/limao"
                           className="block px-4 py-2 text-sm text-white/80 hover:bg-saboroso-red hover:text-white"
                         >
                           Limão
@@ -109,16 +113,14 @@ export default function Navbar() {
               ))}
             </nav>
 
-            <a
-              href="https://wa.me/551835519191"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 bg-saboroso-red hover:bg-saboroso-red-dark text-white xl:px-4 xl:py-2.5 2xl:px-6 2xl:py-3 rounded-full text-[10px] xl:text-[11px] 2xl:text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-md hover:shadow-saboroso-red/30 hover:scale-105 active:scale-95 transform whitespace-nowrap"
+            <button
+              onClick={onOpenContact}
+              className="inline-flex items-center gap-1.5 bg-saboroso-red hover:bg-saboroso-red-dark text-white xl:px-4 xl:py-2.5 2xl:px-6 2xl:py-3 rounded-full text-[10px] xl:text-[11px] 2xl:text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-md hover:shadow-saboroso-red/30 hover:scale-105 active:scale-95 transform whitespace-nowrap cursor-pointer"
               title="Fale Conosco"
             >
               Fale Conosco
               <MessageCircle className="w-4.5 h-4.5 2xl:w-5 2xl:h-5 flex-shrink-0" />
-            </a>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -184,15 +186,16 @@ export default function Navbar() {
                 </a>
               ))}
               <div className="pt-4 pb-2 px-3">
-                <a
-                  href="https://wa.me/551835519191"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 bg-saboroso-red hover:bg-saboroso-red-dark text-white px-5 py-3 rounded-full text-sm font-semibold tracking-wide uppercase transition-all duration-300 w-full"
+                <button
+                  onClick={() => {
+                    setIsOpen(false);
+                    onOpenContact();
+                  }}
+                  className="flex items-center justify-center gap-2 bg-saboroso-red hover:bg-saboroso-red-dark text-white px-5 py-3 rounded-full text-sm font-semibold tracking-wide uppercase transition-all duration-300 w-full cursor-pointer"
                 >
                   Fale Conosco
                   <MessageCircle className="w-5 h-5" />
-                </a>
+                </button>
               </div>
             </div>
           </motion.div>

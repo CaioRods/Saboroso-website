@@ -2,10 +2,12 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight, Plus, Eye } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function ProductCarousel() {
+  const router = useRouter();
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
 
@@ -109,6 +111,7 @@ export default function ProductCarousel() {
                   layout
                   onMouseEnter={() => setHoveredProduct(product.id)}
                   onMouseLeave={() => setHoveredProduct(null)}
+                  onClick={() => router.push("/produtos/" + product.id)}
                   className="relative rounded-3xl overflow-hidden bg-gradient-to-b from-saboroso-charcoal-light to-saboroso-charcoal border border-white/15 p-6 flex flex-col items-center justify-between min-h-[460px] group transition-all duration-500 cursor-pointer"
                   style={{
                     boxShadow: `0 10px 30px -15px ${product.glowColor}`,
@@ -159,7 +162,13 @@ export default function ProductCarousel() {
 
                   {/* Interactive Button */}
                   <div className="mt-6 z-10">
-                    <button className="w-10 h-10 rounded-full border border-white/20 group-hover:border-saboroso-gold group-hover:bg-saboroso-gold group-hover:text-saboroso-charcoal flex items-center justify-center transition-all duration-300 shadow-sm">
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        router.push("/produtos/" + product.id);
+                      }}
+                      className="w-10 h-10 rounded-full border border-white/20 group-hover:border-saboroso-gold group-hover:bg-saboroso-gold group-hover:text-saboroso-charcoal flex items-center justify-center transition-all duration-300 shadow-sm cursor-pointer"
+                    >
                       <Plus className="w-4 h-4 group-hover:rotate-90 transition-transform duration-300" />
                     </button>
                   </div>
@@ -176,7 +185,8 @@ export default function ProductCarousel() {
                   animate={{ opacity: 1, x: 0, scale: 1 }}
                   exit={{ opacity: 0, x: -50, scale: 0.95 }}
                   transition={{ duration: 0.4 }}
-                  className={`relative w-full max-w-[320px] rounded-3xl bg-gradient-to-b ${products[activeIndex].bgColor} border border-white/10 p-6 flex flex-col items-center justify-between min-h-[420px] shadow-2xl`}
+                  onClick={() => router.push("/produtos/" + products[activeIndex].id)}
+                  className={`relative w-full max-w-[320px] rounded-3xl bg-gradient-to-b ${products[activeIndex].bgColor} border border-white/10 p-6 flex flex-col items-center justify-between min-h-[420px] shadow-2xl cursor-pointer`}
                   style={{
                     boxShadow: `0 20px 40px -10px ${products[activeIndex].glowColor}`,
                   }}
@@ -203,7 +213,13 @@ export default function ProductCarousel() {
                   </div>
 
                   <div className="mt-5 z-10 flex items-center gap-4">
-                    <button className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center">
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        router.push("/produtos/" + products[activeIndex].id);
+                      }}
+                      className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center cursor-pointer"
+                    >
                       <Plus className="w-4 h-4" />
                     </button>
                   </div>

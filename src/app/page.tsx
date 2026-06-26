@@ -5,6 +5,7 @@ import { motion, useScroll, useVelocity, useTransform, useSpring } from "framer-
 import Lenis from "lenis";
 import LoadingScreen from "@/components/LoadingScreen";
 import Navbar from "@/components/Navbar";
+import ContactModal from "@/components/ContactModal";
 import Hero from "@/components/Hero";
 import Timeline from "@/components/Timeline";
 import ProductCarousel from "@/components/ProductCarousel";
@@ -19,6 +20,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   const [showSocial, setShowSocial] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -88,7 +90,7 @@ export default function Home() {
   return (
     <>
       <LoadingScreen />
-      <Navbar />
+      <Navbar onOpenContact={() => setIsContactOpen(true)} />
       <main className="flex-grow">
         <Hero />
         <Timeline />
@@ -126,6 +128,8 @@ export default function Home() {
           willChange: "backdrop-filter",
         }}
       />
+      
+      <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
     </>
   );
 }
