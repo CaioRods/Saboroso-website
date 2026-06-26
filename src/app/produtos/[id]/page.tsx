@@ -211,7 +211,7 @@ export default function ProductPage() {
           {/* Back Button */}
           <button
             onClick={() => transitionTo("/#produtos")}
-            className="inline-flex items-center gap-2 border border-white/10 hover:border-saboroso-gold/50 bg-white/5 rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 mb-5 hover:-translate-x-1 cursor-pointer"
+            className="inline-flex items-center gap-2 border border-white/10 hover:border-saboroso-gold/50 bg-white/5 rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 mb-6 hover:-translate-x-1 cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             Voltar aos Produtos
@@ -229,7 +229,7 @@ export default function ProductPage() {
               />
 
               <motion.div
-                className="relative w-[50%] xs:w-[45%] lg:w-[75%] aspect-[1/2.8] z-10 select-none cursor-pointer"
+                className="relative w-[50%] xs:w-[45%] lg:w-[75%] aspect-[1/2.2] z-10 select-none cursor-pointer"
                 animate={{
                   y: [0, -15, 0],
                 }}
@@ -244,7 +244,7 @@ export default function ProductPage() {
                   alt={product.name}
                   fill
                   priority
-                  className="object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.5)] drop-shadow-[0_45px_90px_rgba(0,0,0,0.25)] brightness-[0.93] contrast-[1.03] saturate-[0.90] sepia-[0.04]"
+                  className="object-contain object-top drop-shadow-[0_20px_35px_rgba(0,0,0,0.5)] drop-shadow-[0_45px_90px_rgba(0,0,0,0.25)] brightness-[0.93] contrast-[1.03] saturate-[0.90] sepia-[0.04]"
                 />
               </motion.div>
             </div>
