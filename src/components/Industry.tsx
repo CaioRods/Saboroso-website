@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { ArrowRight, Play, Factory, ChevronDown, ChevronUp } from "lucide-react";
 import { motion } from "framer-motion";
+import { useWaveTransition } from "@/components/WaveTransition";
 
 interface IndustryProps {
   onShowSocial: () => void;
@@ -11,6 +12,7 @@ interface IndustryProps {
 }
 
 export default function Industry({ onShowSocial, showSocial }: IndustryProps) {
+  const { transitionTo } = useWaveTransition();
   const stats = [
     {
       number: "+10 milhões",
@@ -50,15 +52,15 @@ export default function Industry({ onShowSocial, showSocial }: IndustryProps) {
               qualidade e confiança
             </h2>
             <p className="text-white/60 text-base leading-relaxed mb-8 font-light">
-              Investimos continuamente em tecnologia, pessoas e processos para entregar sempre o melhor produto.
+              Investimos continuamente em tecnologia, pessoas e processos para entregar sempre o melhor product.
             </p>
-            <a
-              href="#comercial"
-              className="inline-flex items-center justify-center gap-3 bg-saboroso-red hover:bg-saboroso-red-dark text-white px-7 py-3.5 rounded-full font-bold text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 shadow-md hover:shadow-saboroso-red/20 transform hover:-translate-y-0.5"
+            <button
+              onClick={() => transitionTo("/fabrica")}
+              className="inline-flex items-center justify-center gap-3 bg-saboroso-red hover:bg-saboroso-red-dark text-white px-7 py-3.5 rounded-full font-bold text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 shadow-md hover:shadow-saboroso-red/20 transform hover:-translate-y-0.5 cursor-pointer"
             >
               Conheça Nossa Fábrica
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </button>
           </div>
 
           {/* Center Factory Image with Play button */}
